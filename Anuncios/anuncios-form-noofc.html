@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,16 +15,18 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <title>Transparencia Ciudadana</title>
-    <link rel="icon" href="resources/icon2.png">
+    <link rel="icon" href="/resources/icon2.png">
 </head>
 
 <body>
+
+    <!-- header -->
 
     <div class="container">
         <header class="border-bottom lh-1 py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-2 pt-1">
-                    <a href="/index.html"><img src="resources/logo.png" height="30"></a>
+                    <a href="/index.html"><img src="/resources/logo.png" height="30"></a>
                 </div>
                 <form class="col-6" role="search">
                     <div class="input-group px-4">
@@ -35,7 +37,8 @@
                 </form>
 
                 <div class="col-2 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+
+                    <a class="btn btn-sm btn-outline-secondary" href="/otros/sign-up.html">Sign up</a>
                 </div>
             </div>
         </header>
@@ -43,29 +46,32 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between bg-body-tertiary">
                 <a class="nav-item"></a>
-                <a class="nav-item nav-link link-body-emphasis" href="index.html">Inicio</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/index.html">Inicio</a>
                 <li class="nav-item dropdown">
                     <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">Denuncias</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="denuncia-dash.html">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="denuncia-form.html">Agregar denuncias</a></li>
+                        <li><a class="dropdown-item" href="/denuncias/denuncia-dash.html">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="/denuncias/denuncia-form.html">Agregar denuncias</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">Anuncios</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="#">Agregar anuncios</a></li>
+                        <li><a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="anuncios-form-noofc.html">Agregar anuncios</a></li>
                     </ul>
                 </li>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Noticias</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Nosotros</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/otros/nosotros.html">Nosotros</a>
                 <a class="nav-item"></a>
             </nav>
         </div>
     </div>
+
+
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <main>
         <div class="container mt-4">
@@ -100,7 +106,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="announcementImages" class="form-label">Adjuntar Imágenes o Videos</label>
-                    <input type="file" class="form-control" id="announcementImages" name="announcementImages" accept="image/*,video/*" multiple>
+                    <input type="file" class="form-control" id="announcementImages" name="announcementImages"
+                        accept="image/*,video/*" multiple>
                 </div>
                 <div class="mb-3">
                     <label for="userName" class="form-label">Nombre de Usuario</label>
@@ -108,13 +115,43 @@
                 </div>
                 <div class="mb-3">
                     <label for="userProfilePicture" class="form-label">Foto de Perfil (Opcional)</label>
-                    <input type="file" class="form-control" id="userProfilePicture" name="userProfilePicture" accept="image/*">
+                    <input type="file" class="form-control" id="userProfilePicture" name="userProfilePicture"
+                        accept="image/*">
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Publicar Anuncio</button>
                 </div>
             </form>
         </div>
+
+        <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- footer -->
+
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-body-secondary">© 2024 Transparencia Ciudadana</p>
+
+                <a href="/"
+                    class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <img height="50" src="/resources/icon.png">
+                    </img>
+                </a>
+
+                <ul class="nav col-md-4 justify-content-end">
+                    <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-body-secondary">Inicio</a>
+                    </li>
+                    <li class="nav-item"><a href="/denuncias/denuncia-dash.html"
+                            class="nav-link px-2 text-body-secondary">Denuncias</a></li>
+                    <li class="nav-item"><a href="anuncios-dash.html"
+                            class="nav-link px-2 text-body-secondary">Anuncios</a></li>
+                    <li class="nav-item"><a href="/news/news-dash.html"
+                            class="nav-link px-2 text-body-secondary">Noticias</a></li>
+                    <li class="nav-item"><a href="/otros/nosotros.html"
+                            class="nav-link px-2 text-body-secondary">Nosotros</a></li>
+                </ul>
+            </footer>
+        </div>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

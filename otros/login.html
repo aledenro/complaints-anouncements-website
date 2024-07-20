@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +21,13 @@
 
 <body>
 
+    <!-- header -->
+
     <div class="container">
         <header class="border-bottom lh-1 py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-2 pt-1">
-                    <a href="/index.html"><img src="resources/logo.png" height="30"></a>
+                    <a href="/index.html"><img src="/resources/logo.png" height="30"></a>
                 </div>
                 <form class="col-6" role="search">
                     <div class="input-group px-4">
@@ -36,8 +38,7 @@
                 </form>
 
                 <div class="col-2 d-flex justify-content-end align-items-center">
-
-                    <a class="btn btn-sm btn-outline-secondary" href="otros/login.html">Login</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/otros/sign-up.html">Sign up</a>
                 </div>
             </div>
         </header>
@@ -45,29 +46,31 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between bg-body-tertiary">
                 <a class="nav-item"></a>
-                <a class="nav-item nav-link link-body-emphasis" href="index.html">Inicio</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/index.html">Inicio</a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link link-body-emphasis px-2 dropdown-toggle" data-bs-toggle="dropdown"
+                    <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">Denuncias</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="denuncia-dash.html">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="denuncia-form.html">Agregar denuncias</a></li>
+                        <li><a class="dropdown-item" href="/denuncias/denuncia-dash.html">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="/denuncias/denuncia-form.html">Agregar denuncias</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">Anuncios</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="#">Agregar anuncios</a></li>
+                        <li><a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="/Anuncios/anuncios-form-noofc.html">Agregar anuncios</a></li>
                     </ul>
                 </li>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Noticias</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Nosotros</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
+                <a class="nav-item nav-link link-body-emphasis" href="/otros/nosotros.html">Nosotros</a>
                 <a class="nav-item"></a>
             </nav>
         </div>
     </div>
+
+
 
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -77,34 +80,35 @@
             <div class="col-sm-6 col-lg-4 mb-3">
                 <div class="rounded-4 shadow text-center">
                     <div class="card-header p-5 pb-4 border-bottom-0">
-                        <h1 class="fw-bold mb-0 fs-2"
-                            style="font-family: 'Antonio'">Login</h1>
+                        <h1>Login</h1>
                     </div>
                     <div class="card-body p-5 pt-0">
                         <form method="post" ">
-                            <div class="form-floating mb-3">
-                                <input class="form-control rounded-3" type="text"  name="username" placeholder="Usuario"/>
-                                <label for="username">Nombre</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control rounded-3" type="password" name="password" placeholder="Contraseña"/>
-                                <label for="password">Contraseña</label>
-                            </div>
-                            <div class="card-footer col text-center">
-                                <button class="w-100 mb-2 btn btn-primary" type="submit">
-                                    <span class="w-100 m-0">Login</span></button>
-                                <button class="w-100 mb-2 btn btn-outline-secondary p-0">
-                                    <a th:href="sign-up.html" class="btn w-100">Registrar</a></button>
-                            </div>
-                        </form>
+                            <div class=" form-floating mb-3">
+                            <input class="form-control rounded-3" type="text" name="username" placeholder="Usuario" />
+                            <label for="username">Nombre</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control rounded-3" type="password" name="password"
+                            placeholder="Contraseña" />
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <div class="card-footer col text-center">
+                        <button class="w-100 mb-2 btn btn-primary" type="submit">
+                            <span class="w-100 m-0">Login</span></button>
+                        <button class="w-100 mb-2 btn btn-outline-secondary p-0">
+                            <a th:href="sign-up.html" class="btn w-100">Registrar</a></button>
+                    </div>
+                    </form>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 
 
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- footer -->
 
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -119,11 +123,14 @@
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-body-secondary">Inicio</a>
                 </li>
-                <li class="nav-item"><a href="/denuncia-dash.html"
+                <li class="nav-item"><a href="/denuncias/denuncia-dash.html"
                         class="nav-link px-2 text-body-secondary">Denuncias</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Anuncios</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Noticias</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Nosotros</a></li>
+                <li class="nav-item"><a href="/Anuncios/anuncios-dash.html"
+                        class="nav-link px-2 text-body-secondary">Anuncios</a></li>
+                <li class="nav-item"><a href="/news/news-dash.html"
+                        class="nav-link px-2 text-body-secondary">Noticias</a></li>
+                <li class="nav-item"><a href="/otros/nosotros.html"
+                        class="nav-link px-2 text-body-secondary">Nosotros</a></li>
             </ul>
         </footer>
     </div>
