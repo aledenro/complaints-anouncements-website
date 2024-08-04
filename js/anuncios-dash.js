@@ -1,7 +1,19 @@
 const containerAnuncios = document.getElementById("containerAnuncios");
 
+function renderImageIfNotEmpty(img_anuncio) {
+  if (img_anuncio !== "") {
+    return (
+      <div class="col-auto d-none d-lg-block">
+        <img src={img_anuncio} width="300" height="250" />
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
+}
+
 function getAllAnuncios() {
-  fetch("/php/get_all_denuncias.php")
+  fetch("/php/get_all_anuncios.php")
     .then((response) => response.json())
     .then(function (response) {
       const anuncios = response["Anuncios"];
@@ -12,9 +24,7 @@ function getAllAnuncios() {
         if (anuncio["oficial"] === "1") {
           arrayComponentes.push(
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col-auto d-none d-lg-block">
-                <img src={anuncio["url_imagen"]} width="300" height="250" />
-              </div>
+              {renderImageIfNotEmpty(anuncio["url_imagen"])}
               <div class="col p-4 flex-column position-static">
                 <div class="d-flex justify-content-between">
                   <strong class="d-inline-block mb-2 badge bg-primary-subtle text-primary-emphasis rounded-pill text-uppercase">
@@ -60,9 +70,7 @@ function getAllAnuncios() {
         } else if (anuncio["oficial"] === "0") {
           arrayComponentes.push(
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col-auto d-none d-lg-block">
-                <img src={anuncio["url_imagen"]} width="300" height="250" />
-              </div>
+              {renderImageIfNotEmpty(anuncio["url_imagen"])}
               <div class="col p-4 flex-column position-static">
                 <div class="d-flex justify-content-between">
                   <strong class="d-inline-block mb-2 badge bg-secondary-subtle text-secondary-emphasis rounded-pill text-uppercase">

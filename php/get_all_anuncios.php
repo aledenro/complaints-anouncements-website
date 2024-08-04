@@ -3,7 +3,7 @@ include "dbConnection.php";
 
 function get_all_anuncios(){
     $conn = openConnection();
-    $sql = "CALL get_all_denuncias";
+    $sql = "CALL get_all_anuncios";
     $result = $conn->query($sql) or die("Error al extraer los  anuncios: ". $conn->error);
 
     $anuncios = array();
