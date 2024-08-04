@@ -37,57 +37,46 @@ CREATE TABLE Rol (
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );
 
--- 4. Pais
-CREATE TABLE Pais (
-    id_Pais INT AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(20) NOT NULL
-);
 
 -- 5. Provincia
 CREATE TABLE Provincia (
-    id_Provincia INT AUTO_INCREMENT PRIMARY KEY,
-    id_Pais INT,
-    Nombre VARCHAR(20) NOT NULL,
-    FOREIGN KEY (id_Pais) REFERENCES Pais(id_Pais)
-);
-
--- 6. Distrito
-CREATE TABLE Distrito (
-    id_Distrito INT AUTO_INCREMENT PRIMARY KEY,
-    id_Provincia INT,
-    Nombre VARCHAR(20) NOT NULL,
-    FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia)
+    id_Provincia INT NOT NULL PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL
 );
 
 -- 7. Canton
 CREATE TABLE Canton (
-    id_Canton INT AUTO_INCREMENT PRIMARY KEY,
-    id_Distrito INT,
-    Nombre VARCHAR(20) NOT NULL,
-    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
+    id_Canton INT NOT NULL PRIMARY KEY,
+    id_Provincia INT,
+    Nombre VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia)
 );
 
--- 8. Ubicacion
-CREATE TABLE Ubicacion (
-    id_Ubicacion INT AUTO_INCREMENT PRIMARY KEY,
+-- 6. Distrito
+CREATE TABLE Distrito (
+    id_Distrito INT NOT NULL PRIMARY KEY,
     id_Canton INT,
-    id_Provincia INT,
-    id_Distrito INT,
-    Nombre VARCHAR(255) NOT NULL,
-    FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
-    FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
-    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
+    Nombre VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton)
 );
 
 -- 9. Anuncio
 CREATE TABLE Anuncio (
     id_Anuncio INT AUTO_INCREMENT PRIMARY KEY,
-    id_Usuario INT,
+    id_Usuario INT NOT NULL,
     Titulo VARCHAR(255) NOT NULL,
-    Estado BOOLEAN,
-    Descripcion TEXT,
-    Fecha DATE,
-    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
+    Estado BOOLEAN NOT NULL,
+    Descripcion TEXT NOT NULL,
+    Fecha DATE NOT NULL,
+    oficial BOOLEAN NOT NULL,
+    url_imagen VARCHAR(500),
+    id_Provincia INT,
+    id_Canton INT,
+    id_Distrito INT,
+    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario),
+    FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
+    FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
+    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
 );
 
 -- 10. Denuncia
@@ -98,7 +87,14 @@ CREATE TABLE Denuncia (
     Fecha DATE,
     Titulo VARCHAR(255),
     Descripcion TEXT,
-    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
+    url_imagen VARCHAR(500),
+    id_Provincia INT,
+    id_Canton INT,
+    id_Distrito INT,
+    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario),
+    FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
+    FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
+    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
 );
 
 -- 11. Categoria_Anuncio
@@ -117,24 +113,6 @@ CREATE TABLE Categoria_Denuncia (
     id_Categoria INT,
     FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
     FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria)
-);
-
--- 13. Ubicacion_Anuncio
-CREATE TABLE Ubicacion_Anuncio (
-    id_UbicacionAnuncio INT AUTO_INCREMENT PRIMARY KEY,
-    id_Anuncio INT,
-    id_Ubicacion INT,
-    FOREIGN KEY (id_Anuncio) REFERENCES Anuncio(id_Anuncio),
-    FOREIGN KEY (id_Ubicacion) REFERENCES Ubicacion(id_Ubicacion)
-);
-
--- 14. Ubicacion_Denuncia
-CREATE TABLE Ubicacion_Denuncia (
-    id_UbicacionDenuncia INT AUTO_INCREMENT PRIMARY KEY,
-    id_Denuncia INT,
-    id_Ubicacion INT,
-    FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
-    FOREIGN KEY (id_Ubicacion) REFERENCES Ubicacion(id_Ubicacion)
 );
 
 -- 15. Anuncio_Comentario
