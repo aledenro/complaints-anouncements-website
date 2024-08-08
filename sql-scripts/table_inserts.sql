@@ -230,3 +230,11 @@ VALUES
 (1, 'Perro perdido en el parque central', TRUE, 'Se perdió un perro de raza Labrador, color amarillo, responde al nombre de Max. Se perdió en el parque central el 1 de agosto. Por favor, si lo encuentran, contactarse con nosotros.', '2024-08-01', FALSE, 'https://firebasestorage.googleapis.com/v0/b/compliants-anouncements-web.appspot.com/o/imgs%2Flabrador.jpg?alt=media&token=8d7c2c82-9c4e-44c1-b10e-9020012a0e8b', 1, 101, 10101),
 (2, 'Aviso de corte de agua', TRUE, 'Se informa a los vecinos que habrá un corte de agua el próximo lunes 5 de agosto desde las 8:00 AM hasta las 2:00 PM por mantenimiento. Disculpen las molestias.', '2024-08-02', TRUE, 'https://firebasestorage.googleapis.com/v0/b/compliants-anouncements-web.appspot.com/o/imgs%2FcorteAgua.jpg?alt=media&token=1c3905c6-ebe9-4cb3-81d9-7db2af6649f6', 1, 102, 10201),
 (3, 'Venta de garaje', TRUE, 'Estamos organizando una venta de garaje este sábado 3 de agosto a partir de las 10:00 AM en la calle 123. Habrá muebles, ropa, y más a precios económicos. ¡No se lo pierdan!', '2024-08-02', FALSE, '', 1, 103, 10301);
+
+-- cambios valeria
+-- test inserts denuncias 
+INSERT INTO Denuncia (id_Usuario, Anonimo, Titulo, Estado, Fecha, Descripcion, url_imagen, id_Provincia, id_Canton, id_Distrito) 
+VALUES 
+(1, FALSE, 'Bache en carretera principal', TRUE,'2024-08-07', 'Hay un bache grande en la carretera principal que conecta San José con Heredia. Es un peligro para los conductores.',  'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/ZN72HBGPWJALHO6WIPV5ZMVOGA.jpg', 1, 103, 10301),
+(2, FALSE, 'Alumbrado público dañado', TRUE,'2024-08-05','El poste de luz frente a mi casa no funciona desde hace dos semanas. Es muy oscuro por la noche y aumenta el riesgo de robos.',  '', 1, 102, 10202),
+(3, FALSE, 'Basura acumulada en el Parque Central',TRUE,'2024-08-01', 'El parque central tiene una acumulación de basura que no ha sido recogida en días. Es un problema de salud pública.',  'https://i2.wp.com/noticiassanjose.com/wp-content/uploads/2022/06/IMG_8551.jpeg?resize=840%2C630&ssl=1', 1, 101, 10104);
