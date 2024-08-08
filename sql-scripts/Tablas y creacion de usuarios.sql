@@ -79,18 +79,20 @@ CREATE TABLE Anuncio (
     FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
 );
 
+
 -- 10. Denuncia
 CREATE TABLE Denuncia (
     id_Denuncia INT AUTO_INCREMENT PRIMARY KEY,
-    id_Usuario INT,
-    Estado BOOLEAN,
-    Fecha DATE,
-    Titulo VARCHAR(255),
-    Descripcion TEXT,
+    id_Usuario INT NOT NULL,
+    Anonimo BOOLEAN NOT NULL,
+	Titulo VARCHAR(255) NOT NULL,
+    Estado BOOLEAN NOT NULL,
+    Fecha DATE NOT NULL,
+    Descripcion TEXT NOT NULL,
     url_imagen VARCHAR(500),
-    id_Provincia INT,
-    id_Canton INT,
-    id_Distrito INT,
+    id_Provincia INT NOT NULL,
+    id_Canton INT NOT NULL,
+    id_Distrito INT NOT NULL,
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario),
     FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
     FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
@@ -106,14 +108,16 @@ CREATE TABLE Categoria_Anuncio (
     FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria)
 );
 
+
 -- 12. Categoria_Denuncia
 CREATE TABLE Categoria_Denuncia (
     id_CategoriaDenuncia INT AUTO_INCREMENT PRIMARY KEY,
-    id_Denuncia INT,
+    id_Denuncia INT NOT NULL,
     id_Categoria INT,
     FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
     FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria)
 );
+
 
 -- 15. Anuncio_Comentario
 CREATE TABLE Anuncio_Comentario (
@@ -130,11 +134,13 @@ CREATE TABLE Anuncio_Comentario (
 -- 16. Denuncia_Comentario
 CREATE TABLE Denuncia_Comentario (
     id_DenunciaComentario INT AUTO_INCREMENT PRIMARY KEY,
-    id_Denuncia INT,
-    id_Usuario INT,
-    Fecha DATE,
-    Texto TEXT,
-    Descripcion TEXT,
+    id_Denuncia INT NOT NULL,
+    id_Usuario INT NOT NULL,
+    Fecha DATE NOT NULL,
+    Texto TEXT NOT NULL,
     FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );
+
+
+
