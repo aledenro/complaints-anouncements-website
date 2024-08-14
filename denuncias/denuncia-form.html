@@ -86,27 +86,13 @@
                                     <ul class="list-unstyled d-flex flex-column gap-2">
                                         <li class="d-flex flex-row gap-2">
                                             <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="red" class="bi bi-check-circle text-success"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                                    <path
-                                                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                                </svg>
+                                                <i class="bi bi-exclamation-circle text-danger"></i>
                                             </span>
                                             <span>Lenguaje irespetuoso</span>
                                         </li>
                                         <li class="d-flex flex-row gap-2">
                                             <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="red" class="bi bi-check-circle text-success"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                                    <path
-                                                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                                                </svg>
+                                                <i class="bi bi-exclamation-circle text-danger"></i>
                                             </span>
                                             <span>Información poco relevante</span>
                                         </li>
@@ -144,79 +130,68 @@
                             </div>
                             <div class="pb-4 px-6">
                                 <h3 class="mb-4">Envíanos tu denuncia</h3>
-                                <form class="needs-validation mb-3" novalidate="">
+                                <form class="needs-validation mb-3" novalidate="" action="/php/setDenuncias.php"
+                                    method="POST">
 
                                     <div class="form-check form-switch mb-3">
                                         <input class="form-check-input" type="checkbox" role="switch"
-                                            id="flexSwitchCheckDefault">
-                                        <label class="form-check-label" for="flexSwitchCheckDefault">Deseo que mi
+                                            name="switchAnonimo" value="TRUE">
+                                        <label class="form-check-label" for="switchAnonimo" name="switchAnonimo">Deseo
+                                            que mi
                                             denuncia sea
                                             anónima</label>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="EmailInput" class="form-label visually-hidden">Ingrese su correo
-                                            electrónico</label>
-                                        <input type="email" class="form-control" id="EmailInput" required=""
-                                            placeholder="Ingrese su correo electrónico" />
-                                        <div class="invalid-feedback">Por favor, ingrese su correo electrónico</div>
                                     </div>
                                     <div class="mb-3">
                                         <h5>Datos referentes a la denuncia</h5>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="FullnameInput" class="form-label visually-hidden">Título</label>
-                                        <input type="text" class="form-control" id="FullnameInput" required=""
-                                            placeholder="Título de la denuncia" />
+                                        <label for="tituloDenuncia" class="form-label visually-hidden">Título</label>
+                                        <input type="text" class="form-control" id="tituloDenuncia"
+                                            name="tituloDenuncia" required="" placeholder="Título de la denuncia" />
                                         <div class="invalid-feedback">Por favor, ingrese el título</div>
                                     </div>
-                                    <!-- ////////// -->
                                     <div class="mb-3">
-                                        <select class="form-select" id="selectProvincia">
+                                        <select class="form-select" id="selectCategoria" name="selectCategoria">
+                                            <option selected>Categoría</option>
+                                        </select>
+                                        <div class="invalid-feedback">Por favor, ingrese una categoría</div>
+                                    </div>
+                                    <p>A que ubicación se refiere en esta denuncia?</p>
+                                    <div class="mb-3">
+                                        <select class="form-select" id="selectProvincia" name="selectProvincia">
                                             <option></option>
                                         </select>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <select class="form-select" id="selectCanton">
+                                            <select class="form-select" id="selectCanton" name="selectCanton">
                                                 <option selected>Cantón</option>
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <select class="form-select" id="selectDistrito">
+                                            <select class="form-select" id="selectDistrito" name="selectDistrito">
                                                 <option selected>Distrito</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- ///////// -->
                                     <div class="mb-3">
-                                        <label for="" class="form-label visually-hidden">Seleccione
-                                            categorías</label>
-                                        <input type="text" class="form-control" id="categoria" required=""
-                                            placeholder="Seleccione categorías" />
-                                        <div class="invalid-feedback">Por favor, ingrese al menos una categoría</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="messages" class="form-label visually-hidden">Escriba aquí su
+                                        <label for="descripcion" class="form-label visually-hidden">Escriba aquí su
                                             denuncia...</label>
-                                        <textarea rows="3" class="form-control" id="messages"
+                                        <textarea rows="3" class="form-control" id="descripcion" name="descripcion"
                                             placeholder="Ingrese los detalles de su denuncia"></textarea>
                                     </div>
-
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label visually-hidden">Subir evidencia
+                                        <label for="imgDenuncia" class="form-label visually-hidden">Subir evidencia
                                             de la denuncia</label>
-                                        <input class="form-control" type="file" id="formFile"
+                                        <input class="form-control" type="file" id="imgDenuncia" name="imgDenuncia"
                                             placeholder="Subir evidencia de la denuncia">
-
-
                                     </div>
+                                    <div class="">
+                                        <button class="btn btn-primary jus" type="submit">Enviar</button>
+                                    </div>
+                                </form>
                             </div>
 
-                            <div class="">
-                                <button class="btn btn-primary jus" type="submit">Enviar</button>
-                            </div>
-                            </form>
                             <div class="">
                                 <small>
                                     Al enviar este formulario, usted acepta los términos establecidos en nuestra
@@ -227,7 +202,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

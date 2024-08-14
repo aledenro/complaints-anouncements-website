@@ -45,7 +45,9 @@ function constructDetallesDenuncia(jsonDenuncia) {
             <i class="bi bi-person-circle"></i>
             <div class="ms-2">
               <a href="#" class="text-reset fs-6">
-                {jsonDenuncia["Usuario"]}
+                {jsonDenuncia["Anonimo"] === "0"
+                  ? jsonDenuncia["Usuario"]
+                  : "Denuncia anónima"}
               </a>
             </div>
           </div>

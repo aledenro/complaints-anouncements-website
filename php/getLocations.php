@@ -5,7 +5,7 @@ include "dbConnection.php";
 function getProvincias()
 {
     $conn = openConnection();
-    $sql = "SELECT id_Provincia, Nombre FROM Provincia";
+    $sql = "CALL get_provincias";
     $result = $conn->query($sql) or die(json_encode(['error' => "Error al consultar las provincias: " . $conn->error]));
 
     $provincias = array();
@@ -22,7 +22,8 @@ function getProvincias()
 function getCantones($id_provincia)
 {
     $conn = openConnection();
-    $sql = "SELECT id_Canton, Nombre FROM Canton WHERE id_Provincia = ?";
+
+    $sql = "CALL get_cantones(?)";
     $stmt = $conn->prepare($sql) or die(json_encode(['error' => "Error al consultar cantones: " . $conn->error]));
 
     $stmt->bind_param("i", $id_provincia);
@@ -42,7 +43,7 @@ function getCantones($id_provincia)
 function getDistritos($id_canton)
 {
     $conn = openConnection();
-    $sql = "SELECT id_Distrito, Nombre FROM Distrito WHERE id_Canton = ?";
+    $sql = "CALL get_distritos(?)";
     $stmt = $conn->prepare($sql) or die(json_encode(['error' => "Error al consultar distritos: " . $conn->error]));
     $stmt->bind_param("i", $id_canton);
     $stmt->execute();

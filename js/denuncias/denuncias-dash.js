@@ -47,7 +47,9 @@ function getAllDenuncias() {
                     <i class="bi bi-person-circle"></i>
                     <div class="ms-2">
                       <a href="#" class="text-reset fs-6">
-                        {denuncia["usuario"]}
+                        {denuncia["Anonimo"] === "0"
+                          ? denuncia["usuario"]
+                          : "Denuncia anónima"}
                       </a>
                     </div>
                   </div>

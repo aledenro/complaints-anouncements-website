@@ -53,7 +53,6 @@ drop procedure if exists get_all_denuncias;
 drop procedure if exists get_denuncia;
 drop function if exists count_comments_denuncia;
 
-DELIMITER $$
 -- contar comentarios
 CREATE FUNCTION count_comments_denuncia(vid_denuncia INT)
 RETURNS INT
@@ -69,10 +68,11 @@ BEGIN
     RETURN count_comments_d;
 END$$
 
+DELIMITER $$
 -- devolver todas las denuncias
 CREATE PROCEDURE get_all_denuncias()
 BEGIN
-	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, d.Titulo , d.Fecha, d.url_imagen, count_comments_denuncia(d.id_Denuncia) cantComentarios
+	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, d.Titulo , d.Fecha, d.url_imagen, count_comments_denuncia(d.id_Denuncia) cantComentarios, Anonimo
     FROM Denuncia d
     JOIN Usuario u ON  d.id_Usuario = u.id_Usuario
     WHERE Estado is TRUE;
@@ -85,7 +85,7 @@ BEGIN
 	SET lc_time_names = 'es_CR';
     
 	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) Usuario, d.Titulo, d.Descripcion , DATE_FORMAT(d.Fecha, '%d %M, %Y') Fecha, d.url_imagen, 
-    CONCAT(p.Nombre, ', ', c.Nombre, ', ', i.Nombre) Ubicacion
+    CONCAT(p.Nombre, ', ', c.Nombre, ', ', i.Nombre) Ubicacion, Anonimo
     FROM Denuncia d
     JOIN Usuario u ON  d.id_Usuario = u.id_Usuario
     JOIN Provincia p ON d.id_Provincia = p.id_Provincia
@@ -97,3 +97,4 @@ END$$
 DELIMITER ;
 
 call get_denuncia(1);
+
