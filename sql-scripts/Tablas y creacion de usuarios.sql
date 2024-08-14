@@ -12,11 +12,7 @@ flush privileges;
 
 use denunciasCiudadanas;
 
--- 1. Categorias
-CREATE TABLE Categorias (
-    id_Categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL
-);
+-- CATEGORIA ELIMINADA
 
 -- 2. Usuario
 CREATE TABLE Usuario (
@@ -37,14 +33,13 @@ CREATE TABLE Rol (
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );
 
-
 -- 5. Provincia
 CREATE TABLE Provincia (
     id_Provincia INT NOT NULL PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL
 );
 
--- 7. Canton
+-- 6. Canton
 CREATE TABLE Canton (
     id_Canton INT NOT NULL PRIMARY KEY,
     id_Provincia INT,
@@ -52,7 +47,7 @@ CREATE TABLE Canton (
     FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia)
 );
 
--- 6. Distrito
+-- 7. Distrito
 CREATE TABLE Distrito (
     id_Distrito INT NOT NULL PRIMARY KEY,
     id_Canton INT,
@@ -79,6 +74,10 @@ CREATE TABLE Anuncio (
     FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
 );
 
+-- modificacion despues de eliminar categoria
+ALTER TABLE Anuncio
+    ADD id_CategoriaAnuncio INTEGER,
+    ADD CONSTRAINT FOREIGN KEY(id_CategoriaAnuncio) REFERENCES Categoria_Anuncio(id_CategoriaAnuncio);
 
 -- 10. Denuncia
 CREATE TABLE Denuncia (
@@ -99,25 +98,22 @@ CREATE TABLE Denuncia (
     FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
 );
 
+-- modificacion despues de eliminar categoria
+ALTER TABLE Denuncia
+    ADD id_CategoriaDenuncia INTEGER,
+    ADD CONSTRAINT FOREIGN KEY(id_CategoriaDenuncia) REFERENCES Categoria_Denuncia(id_CategoriaDenuncia);
+
 -- 11. Categoria_Anuncio
 CREATE TABLE Categoria_Anuncio (
     id_CategoriaAnuncio INT AUTO_INCREMENT PRIMARY KEY,
-    id_Anuncio INT,
-    id_Categoria INT,
-    FOREIGN KEY (id_Anuncio) REFERENCES Anuncio(id_Anuncio),
-    FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria)
+    nombre VARCHAR(50) NOT NULL
 );
-
 
 -- 12. Categoria_Denuncia
 CREATE TABLE Categoria_Denuncia (
     id_CategoriaDenuncia INT AUTO_INCREMENT PRIMARY KEY,
-    id_Denuncia INT NOT NULL,
-    id_Categoria INT,
-    FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
-    FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria)
+    nombre VARCHAR(50) NOT NULL
 );
-
 
 -- 15. Anuncio_Comentario
 CREATE TABLE Anuncio_Comentario (
