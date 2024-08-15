@@ -586,10 +586,15 @@ VALUES
 (2, 'Aviso de corte de agua', TRUE, 'Se informa a los vecinos que habrá un corte de agua el próximo lunes 5 de agosto desde las 8:00 AM hasta las 2:00 PM por mantenimiento. Disculpen las molestias.', '2024-08-02', TRUE, 'https://firebasestorage.googleapis.com/v0/b/compliants-anouncements-web.appspot.com/o/imgs%2FcorteAgua.jpg?alt=media&token=1c3905c6-ebe9-4cb3-81d9-7db2af6649f6', 1, 102, 10201),
 (3, 'Venta de garaje', TRUE, 'Estamos organizando una venta de garaje este sábado 3 de agosto a partir de las 10:00 AM en la calle 123. Habrá muebles, ropa, y más a precios económicos. ¡No se lo pierdan!', '2024-08-02', FALSE, '', 1, 103, 10301);
 
+
+INSERT INTO Categoria_Denuncia (nombre)
+VALUES
+('Seguridad pública'), ('Infraestructura'), ('Salud'), ('Violencia'), ('Servicios públicos'), ('Contaminación'), ('Delito');
 -- cambios valeria
 -- test inserts denuncias 
-INSERT INTO Denuncia (id_Usuario, Anonimo, Titulo, Estado, Fecha, Descripcion, url_imagen, id_Provincia, id_Canton, id_Distrito) 
+INSERT INTO Denuncia (id_Usuario, Anonimo, Titulo, Estado, Fecha, Descripcion, url_imagen, id_Provincia, id_Canton, id_Distrito, id_CategoriaDenuncia) 
 VALUES 
-(1, FALSE, 'Bache en carretera principal', TRUE,'2024-08-07', 'Hay un bache grande en la carretera principal que conecta San José con Heredia. Es un peligro para los conductores.',  'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/ZN72HBGPWJALHO6WIPV5ZMVOGA.jpg', 1, 103, 10301),
-(2, FALSE, 'Alumbrado público dañado', TRUE,'2024-08-05','El poste de luz frente a mi casa no funciona desde hace dos semanas. Es muy oscuro por la noche y aumenta el riesgo de robos.',  '', 1, 102, 10202),
-(3, FALSE, 'Basura acumulada en el Parque Central',TRUE,'2024-08-01', 'El parque central tiene una acumulación de basura que no ha sido recogida en días. Es un problema de salud pública.',  'https://i2.wp.com/noticiassanjose.com/wp-content/uploads/2022/06/IMG_8551.jpeg?resize=840%2C630&ssl=1', 1, 101, 10104);
+(1, FALSE, 'Bache en carretera principal', TRUE,'2024-08-07', 'Hay un bache grande en la carretera principal que conecta San José con Heredia. Es un peligro para los conductores.',  'https://cloudfront-us-east-1.images.arcpublishing.com/gruponacion/ZN72HBGPWJALHO6WIPV5ZMVOGA.jpg', 1, 103, 10301, 2),
+(2, FALSE, 'Alumbrado público dañado', TRUE,'2024-08-05','El poste de luz frente a mi casa no funciona desde hace dos semanas. Es muy oscuro por la noche y aumenta el riesgo de robos.',  '', 1, 102, 10202, 1),
+(3, FALSE, 'Basura acumulada en el Parque Central',TRUE,'2024-08-01', 'El parque central tiene una acumulación de basura que no ha sido recogida en días. Es un problema de salud pública.',  'https://i2.wp.com/noticiassanjose.com/wp-content/uploads/2022/06/IMG_8551.jpeg?resize=840%2C630&ssl=1', 1, 101, 10104, 6);
+

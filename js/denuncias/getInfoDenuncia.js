@@ -6,6 +6,8 @@ function getDetallesDenuncia(id) {
   return fetch(`/php/getInfoDenuncia.php?id_denuncia=${id}`)
     .then((response) => response.json())
     .then((response) => {
+      console.log(id);
+      console.log(response);
       return response;
     });
 }
@@ -35,7 +37,7 @@ function constructDetallesDenuncia(jsonDenuncia) {
       <h1>{jsonDenuncia["Titulo"]}</h1>
       <div class="d-flex ">
         <strong class="d-inline-block mb-2 badge bg-primary-subtle text-primary-emphasis rounded-pill text-uppercase mx-1">
-          Categoria
+          {jsonDenuncia["Categoria"]}
         </strong>
       </div>
       <div class="d-flex align-items-center mt-lg-6 mt-4 mb-3">
@@ -77,7 +79,7 @@ function constructDetallesDenuncia(jsonDenuncia) {
 
 async function main() {
   const denuncia = await getDetallesDenuncia(id_denuncia);
-  await constructDetallesDenuncia(denuncia);
+  constructDetallesDenuncia(denuncia);
 }
 
 main();

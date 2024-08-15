@@ -2,27 +2,33 @@
 include "dbConnection.php";
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // recuperar valores del formulario y asignarlos a variables
-    $isAnonimo = isset($_POST['switchAnonimo']) ? 1 : 0;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $isAnonimo = isset($_POST['switchAnonimo']) ? $_POST['switchAnonimo'] : 0;
     $usuario = 1;
     $estado = 1;
-    $titulo = isset($_POST['tituloDenuncia']) ? $_POST['tituloDenuncia'] : '';
-    $provincia = isset($_POST['selectProvincia']) ? $_POST['selectProvincia'] : '';
-    $canton = isset($_POST['selectCanton']) ? $_POST['selectCanton'] : '';
-    $distrito = isset($_POST['selectDistrito']) ? $_POST['selectDistrito'] : '';
-    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+
+    function getPostValue($key, $default = '')
+    {
+        return isset($_POST[$key]) ? htmlspecialchars(trim($_POST[$key])) : $default;
+    }
+
+    $titulo = getPostValue('tituloDenuncia');
+    $provincia = getPostValue('selectProvincia');
+    $canton = getPostValue('selectCanton');
+    $distrito = getPostValue('selectDistrito');
+    $descripcion = getPostValue('descripcion');
     $fecha = date('Y-m-d');
-    $url = isset($_POST['imgDenuncia']) ? $_POST['imgDenuncia'] : '';
+    $url = getPostValue('imgDenuncia');
+    $categoria = 1;
 
     $conn = openConnection();
 
-    $sql = "INSERT INTO Denuncia (id_Usuario, Anonimo, Titulo, Estado, Fecha, Descripcion, url_imagen, id_Provincia, id_Canton, id_Distrito) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "CALL insert_denuncia (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // preparar consulta
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // vincular los parametros
-        mysqli_stmt_bind_param($stmt, 'iisisssiii', $usuario, $isAnonimo, $titulo, $estado, $fecha, $descripcion, $url, $provincia, $canton, $distrito);
+        mysqli_stmt_bind_param($stmt, 'iisisssiiii', $usuario, $isAnonimo, $titulo, $estado, $fecha, $descripcion, $url, $provincia, $canton, $distrito, $categoria);
 
         // ejecutar consulta
         if (mysqli_stmt_execute($stmt)) {
