@@ -2,6 +2,8 @@ use denunciasCiudadanas;
 
 drop procedure if exists get_all_anuncios;
 drop procedure if exists get_anuncio;
+drop procedure if exists get_count_comentarios_anuncio;
+drop procedure if exists get_comentarios_anuncio;
 drop function if exists count_comments_anuncio;
 
 delimiter $$
@@ -171,6 +173,22 @@ BEGIN
     FROM Distrito
     WHERE id_Canton = vidCanton;
 END$$ 
+-- get comentarios
+CREATE PROCEDURE get_comentarios_anuncio(vid_Anuncio INT)
+BEGIN
+	SET lc_time_names = 'es_CR';
+    
+    SELECT u.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) Usuario, DATE_FORMAT(ac.Fecha, '%d %M, %Y') Fecha, Texto 
+    FROM Anuncio_Comentario ac
+    JOIN Usuario u ON ac.id_Usuario = u.id_Usuario 
+    WHERE ac.id_Anuncio = vid_Anuncio;
+END$$
+
+CREATE PROCEDURE get_count_comentarios_anuncio(vid_Anuncio INT)
+BEGIN
+	SELECT count_comments_anuncio(vid_Anuncio) cantComentarios FROM DUAL;
+END$$
+
 DELIMITER ;
 
 -- llamar categorias de denuncia

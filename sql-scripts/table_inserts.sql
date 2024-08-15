@@ -598,3 +598,9 @@ VALUES
 (2, FALSE, 'Alumbrado público dañado', TRUE,'2024-08-05','El poste de luz frente a mi casa no funciona desde hace dos semanas. Es muy oscuro por la noche y aumenta el riesgo de robos.',  '', 1, 102, 10202, 1),
 (3, FALSE, 'Basura acumulada en el Parque Central',TRUE,'2024-08-01', 'El parque central tiene una acumulación de basura que no ha sido recogida en días. Es un problema de salud pública.',  'https://i2.wp.com/noticiassanjose.com/wp-content/uploads/2022/06/IMG_8551.jpeg?resize=840%2C630&ssl=1', 1, 101, 10104, 6);
 
+-- test comentarios anuncio
+INSERT INTO Anuncio_Comentario (id_Anuncio, id_Usuario, Fecha, Texto, Descripcion) 
+VALUES 
+(1, 2, '2024-08-02', '¡Espero que encuentren a Max pronto! Publicaré en mis redes sociales para ayudar.', 'Comentario de apoyo para encontrar al perro perdido.'),
+(2, 3, '2024-08-03', 'Gracias por la información sobre el corte de agua. Es importante que todos estemos preparados.', 'Agradecimiento por el aviso del corte de agua.'),
+(3, 1, '2024-08-02', '¡La venta de garaje suena interesante! ¿Aceptan tarjetas de crédito?', 'Pregunta sobre la venta de garaje anunciada.');
