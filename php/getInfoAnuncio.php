@@ -1,7 +1,8 @@
 <?php
 include "dbConnection.php";
 
-function getInfoAnuncio($id_anuncio){
+function getInfoAnuncio($id_anuncio)
+{
     $conn = openConnection();
     $sql = "CALL get_anuncio(?)";
     $stmt = $conn->prepare($sql);
@@ -16,10 +17,8 @@ function getInfoAnuncio($id_anuncio){
     return $anuncio;
 }
 
-$id = (integer)$_GET['id_denuncia'];
+$id = (int)$_GET['id_denuncia'];
 
 $anuncio = getInfoAnuncio($id);
 echo json_encode($anuncio);
 exit;
-
-?>

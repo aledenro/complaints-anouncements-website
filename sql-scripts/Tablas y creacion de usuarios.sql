@@ -12,7 +12,7 @@ flush privileges;
 
 use denunciasCiudadanas;
 
--- CATEGORIA ELIMINADA
+-- tabla CATEGORIA ELIMINADA
 
 -- 2. Usuario
 CREATE TABLE Usuario (
@@ -55,6 +55,18 @@ CREATE TABLE Distrito (
     FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton)
 );
 
+-- 11. Categoria_Anuncio
+CREATE TABLE Categoria_Anuncio (
+    id_CategoriaAnuncio INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+-- 12. Categoria_Denuncia
+CREATE TABLE Categoria_Denuncia (
+    id_CategoriaDenuncia INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
 -- 9. Anuncio
 CREATE TABLE Anuncio (
     id_Anuncio INT AUTO_INCREMENT PRIMARY KEY,
@@ -68,16 +80,13 @@ CREATE TABLE Anuncio (
     id_Provincia INT,
     id_Canton INT,
     id_Distrito INT,
+    id_CategoriaAnuncio INT,
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario),
     FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
     FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
-    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
+    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito),
+    FOREIGN KEY(id_CategoriaAnuncio) REFERENCES Categoria_Anuncio(id_CategoriaAnuncio)
 );
-
--- modificacion despues de eliminar categoria
-ALTER TABLE Anuncio
-    ADD id_CategoriaAnuncio INTEGER,
-    ADD CONSTRAINT FOREIGN KEY(id_CategoriaAnuncio) REFERENCES Categoria_Anuncio(id_CategoriaAnuncio);
 
 -- 10. Denuncia
 CREATE TABLE Denuncia (
@@ -92,28 +101,15 @@ CREATE TABLE Denuncia (
     id_Provincia INT NOT NULL,
     id_Canton INT NOT NULL,
     id_Distrito INT NOT NULL,
+    id_CategoriaDenuncia INT NOT NULL,
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario),
     FOREIGN KEY (id_Provincia) REFERENCES Provincia(id_Provincia),
     FOREIGN KEY (id_Canton) REFERENCES Canton(id_Canton),
-    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito)
+    FOREIGN KEY (id_Distrito) REFERENCES Distrito(id_Distrito),
+    FOREIGN KEY(id_CategoriaDenuncia) REFERENCES Categoria_Denuncia(id_CategoriaDenuncia)
 );
 
--- modificacion despues de eliminar categoria
-ALTER TABLE Denuncia
-    ADD id_CategoriaDenuncia INTEGER,
-    ADD CONSTRAINT FOREIGN KEY(id_CategoriaDenuncia) REFERENCES Categoria_Denuncia(id_CategoriaDenuncia);
 
--- 11. Categoria_Anuncio
-CREATE TABLE Categoria_Anuncio (
-    id_CategoriaAnuncio INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL
-);
-
--- 12. Categoria_Denuncia
-CREATE TABLE Categoria_Denuncia (
-    id_CategoriaDenuncia INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL
-);
 
 -- 15. Anuncio_Comentario
 CREATE TABLE Anuncio_Comentario (

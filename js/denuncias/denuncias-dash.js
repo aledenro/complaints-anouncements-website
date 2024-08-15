@@ -27,7 +27,7 @@ function getAllDenuncias() {
             <div class="col p-4 flex-column position-static">
               <div class="d-flex justify-content-between">
                 <strong class="d-inline-block mb-2 badge bg-primary-subtle text-primary-emphasis rounded-pill text-uppercase">
-                  Categoria
+                  {denuncia["Categoria"]}
                 </strong>
                 <div class="mb-1 text-body-secondary" id="datetime">
                   {denuncia["Fecha"]}
