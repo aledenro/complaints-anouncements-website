@@ -22,9 +22,9 @@ if (!firebase.apps.length) {
   firebase.app();
 }
 
-async function uploadImage(id_anuncio, fileItem, tipo) {
+async function uploadImage(id, fileItem, tipo) {
   try {
-    const storageRef = firebase.storage().ref(`imgs/${tipo + id_anuncio}`);
+    const storageRef = firebase.storage().ref(`imgs/${tipo + id}`);
     const uploadTaskSnapshot = await storageRef.put(fileItem);
     const downloadURL = await uploadTaskSnapshot.ref.getDownloadURL();
     return downloadURL;

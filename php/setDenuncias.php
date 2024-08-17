@@ -1,6 +1,6 @@
 <?php
 include "dbConnection.php";
-session_start();
+header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $isAnonimo = isset($_POST['switchAnonimo']) ? $_POST['switchAnonimo'] : 0;
@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $distrito = getPostValue('selectDistrito');
     $descripcion = getPostValue('descripcion');
     $fecha = date('Y-m-d');
-    $url = getPostValue('imgDenuncia');
+    $url = '';
     $categoria = getPostValue('selectCategoria');
 
     //
     if (empty($titulo) || empty($categoria) || empty($provincia) || empty($canton) || empty($distrito) || empty($descripcion)) {
         echo json_encode(array('success' => false, 'message' => 'Debe completar todos los espacios obligatorios'));
-        exit();
+        exit;
     }
 
     $conn = openConnection();
@@ -38,8 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // ejecutar consulta
         if (mysqli_stmt_execute($stmt)) {
-            echo json_encode(array('success' => true, 'message' => 'Su denuncia ha sido enviada'));
-            exit();
+            $sql = "CALL get_id_latest_denuncia";
+            $result = $conn->query($sql) or die("Error al extraer la denuncia: " . $conn->error);
+            $row = $result->fetch_assoc();
+            $id_latest_denuncia = $row["id_denuncia"];
+            exit(json_encode(array('success' => true, 'message' => 'Su denuncia ha sido enviada', "id_denuncia" => $id_latest_denuncia)));
         } else {
             echo json_encode(array('success' => false, 'message' => 'ERROR: No se pudo ejecutar la solicitud'));
             mysqli_stmt_error($stmt);

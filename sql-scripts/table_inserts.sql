@@ -571,14 +571,13 @@ INSERT INTO Distrito (id_Distrito, id_Canton, Nombre) VALUES
  (70605,706,'Duacarí');
 
 -- test inserts usuarios
-INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena, rol) 
+INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena) 
 VALUES 
-('Juan', 'Pérez García', 'juan.perez@example.com', '555-1234', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
-('María', 'López Fernández', 'maria.lopez@example.com', '555-5678', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
-('Carlos', 'Gómez Martínez', 'carlos.gomez@example.com', '555-8765', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
-('Ana', 'Ruiz Sánchez', 'ana.ruiz@example.com', '555-4321', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
-('Luis', 'Martínez Herrera', 'luis.martinez@example.com', '555-1357', FALSE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
-('Admin', 'Admin', 'admin@gmail.com', '1111-1111', FALSE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'admin');
+('Juan', 'Pérez García', 'juan.perez@example.com', '555-1234', TRUE, 'password123'),
+('María', 'López Fernández', 'maria.lopez@example.com', '555-5678', TRUE, 'securePass!'),
+('Carlos', 'Gómez Martínez', 'carlos.gomez@example.com', '555-8765', TRUE, 'myPassword@2024'),
+('Ana', 'Ruiz Sánchez', 'ana.ruiz@example.com', '555-4321', TRUE, 'anaSecure456'),
+('Luis', 'Martínez Herrera', 'luis.martinez@example.com', '555-1357', FALSE, 'luisPass789');
 
 -- test inserts anuncios 
 INSERT INTO Anuncio (id_Usuario, Titulo, Estado, Descripcion, Fecha, oficial, url_imagen, id_Provincia, id_Canton, id_Distrito) 
@@ -606,11 +605,12 @@ VALUES
 (2, 3, '2024-08-03', 'Gracias por la información sobre el corte de agua. Es importante que todos estemos preparados.', 'Agradecimiento por el aviso del corte de agua.'),
 (3, 1, '2024-08-02', '¡La venta de garaje suena interesante! ¿Aceptan tarjetas de crédito?', 'Pregunta sobre la venta de garaje anunciada.');
 
+select * from denuncia;
 -- inserts comentario denuncia
-INSERT INTO Denuncia_Comentario (id_Denuncia, id_Usuario, Fecha, Texto, Descripcion)
+INSERT INTO Denuncia_Comentario (id_Denuncia, id_Usuario, Fecha, Texto)
 VALUES
-    (1, 2, '2024-08-10', 'Estoy de acuerdo, ese bache es un peligro constante. Ya he reportado el problema a la municipalidad.', ''),
-    (1, 3, '2024-08-12', '¿Alguien sabe cuándo van a arreglar este bache? Ya he caído en él dos veces.', ''),
-    (2, 1, '2024-08-06', 'Vivo cerca de ahí y confirmo que el alumbrado está dañado. Es una preocupación para la seguridad del vecindario.', ''),
-    (3, 1, '2024-08-02', '¡Es una vergüenza que el parque esté en esas condiciones! ¿Dónde está la limpieza pública?', ''),
-    (3, 2, '2024-08-04', 'Además de la basura, los juegos infantiles están rotos. Es necesario una intervención urgente.', '');
+    (1, 2, '2024-08-10', 'Estoy de acuerdo, ese bache es un peligro constante. Ya he reportado el problema a la municipalidad.'),
+    (1, 3, '2024-08-12', '¿Alguien sabe cuándo van a arreglar este bache? Ya he caído en él dos veces.'),
+    (2, 1, '2024-08-06', 'Vivo cerca de ahí y confirmo que el alumbrado está dañado. Es una preocupación para la seguridad del vecindario.'),
+    (3, 1, '2024-08-02', '¡Es una vergüenza que el parque esté en esas condiciones! ¿Dónde está la limpieza pública?'),
+    (3, 2, '2024-08-04', 'Además de la basura, los juegos infantiles están rotos. Es necesario una intervención urgente.');

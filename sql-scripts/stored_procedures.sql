@@ -24,7 +24,8 @@ drop procedure if exists get_count_comentarios_denuncia;
 drop procedure if exists get_comentarios_denuncia;
 drop procedure if exists get_latest_denuncias;
 drop procedure if exists get_latest_anuncios;
-drop procedure if exists get_usuario_by_correo;
+drop procedure if exists update_img_denuncia;
+drop procedure if exists get_id_latest_denuncia;
 
 
 delimiter $$
@@ -66,14 +67,14 @@ BEGIN
     WHERE id_Anuncio = vid_Anuncio;
 END$$
 
-delimiter ;
+
 
 -- call get_all_anuncios();
 -- call get_anuncio(1);
 
 -- cambios valeria
 
-DELIMITER $$
+
 
 -- contar comentarios
 CREATE FUNCTION count_comments_denuncia(vid_denuncia INT)
@@ -227,7 +228,6 @@ BEGIN
 END$$ 
 -- get comentarios
 
-DELIMITER $$
 
 CREATE PROCEDURE get_comentarios_anuncio(vid_Anuncio INT)
 BEGIN
@@ -272,7 +272,7 @@ BEGIN
 END$$ 
 
 
-DELIMITER $$
+
 -- llamar las 3 ultimas denuncias 
 
 CREATE PROCEDURE get_latest_denuncias()
@@ -303,6 +303,7 @@ BEGIN
     FROM Categoria_Anuncio;
 END$$ 
 
+
 CREATE PROCEDURE get_id_latest_anuncio()
 BEGIN
 	SELECT MAX(id_anuncio) as id_anuncio FROM Anuncio;
@@ -315,11 +316,38 @@ BEGIN
     WHERE id_anuncio = vid_anuncio;
 END$$
 
-CREATE PROCEDURE get_usuario_by_correo(IN vcorreo VARCHAR(50))
-BEGIN 
-	SELECT * FROM Usuario WHERE Correo =  vcorreo;
+CREATE PROCEDURE get_id_latest_denuncia()
+BEGIN
+	SELECT MAX(id_denuncia) as id_denuncia FROM Denuncia;
 END$$
 
+CREATE PROCEDURE update_img_denuncia(IN vid_denuncia INT, IN url VARCHAR(500))
+BEGIN
+	UPDATE Denuncia
+    SET url_imagen = url
+    WHERE id_denuncia = vid_denuncia;
+END$$
+
+
+CREATE PROCEDURE insert_comentario_denuncia(
+    IN p_id_Denuncia INT,
+    IN p_id_Usuario INT,
+    IN p_Fecha DATE,
+    IN p_Texto VARCHAR(255)
+)
+BEGIN
+    INSERT INTO Denuncia_Comentario (
+    id_Denuncia,
+        id_Usuario,
+        Fecha,
+        Texto
+    ) VALUES (
+		p_id_Denuncia,
+        p_id_Usuario,
+        p_Fecha,
+        p_Texto
+    );
+END$$ 
 
 DELIMITER ;
 
