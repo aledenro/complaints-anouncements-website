@@ -24,6 +24,7 @@ drop procedure if exists get_count_comentarios_denuncia;
 drop procedure if exists get_comentarios_denuncia;
 drop procedure if exists get_latest_denuncias;
 drop procedure if exists get_latest_anuncios;
+drop procedure if exists get_usuario_by_correo;
 
 
 delimiter $$
@@ -314,6 +315,10 @@ BEGIN
     WHERE id_anuncio = vid_anuncio;
 END$$
 
+CREATE PROCEDURE get_usuario_by_correo(IN vcorreo VARCHAR(50))
+BEGIN 
+	SELECT * FROM Usuario WHERE Correo =  vcorreo;
+END$$
 
 
 DELIMITER ;

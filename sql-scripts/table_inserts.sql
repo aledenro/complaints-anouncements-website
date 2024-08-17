@@ -571,13 +571,14 @@ INSERT INTO Distrito (id_Distrito, id_Canton, Nombre) VALUES
  (70605,706,'Duacarí');
 
 -- test inserts usuarios
-INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena) 
+INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena, rol) 
 VALUES 
-('Juan', 'Pérez García', 'juan.perez@example.com', '555-1234', TRUE, 'password123'),
-('María', 'López Fernández', 'maria.lopez@example.com', '555-5678', TRUE, 'securePass!'),
-('Carlos', 'Gómez Martínez', 'carlos.gomez@example.com', '555-8765', TRUE, 'myPassword@2024'),
-('Ana', 'Ruiz Sánchez', 'ana.ruiz@example.com', '555-4321', TRUE, 'anaSecure456'),
-('Luis', 'Martínez Herrera', 'luis.martinez@example.com', '555-1357', FALSE, 'luisPass789');
+('Juan', 'Pérez García', 'juan.perez@example.com', '555-1234', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
+('María', 'López Fernández', 'maria.lopez@example.com', '555-5678', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
+('Carlos', 'Gómez Martínez', 'carlos.gomez@example.com', '555-8765', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
+('Ana', 'Ruiz Sánchez', 'ana.ruiz@example.com', '555-4321', TRUE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
+('Luis', 'Martínez Herrera', 'luis.martinez@example.com', '555-1357', FALSE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'usuario'),
+('Admin', 'Admin', 'admin@gmail.com', '1111-1111', FALSE, '$2y$10$4ibFmNkT0J89tgDNYKQ7VeH07bYTT02Anqt1fN1lRLgZTlXI7Wa6O', 'admin');
 
 -- test inserts anuncios 
 INSERT INTO Anuncio (id_Usuario, Titulo, Estado, Descripcion, Fecha, oficial, url_imagen, id_Provincia, id_Canton, id_Distrito) 
