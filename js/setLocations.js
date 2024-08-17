@@ -10,6 +10,7 @@ async function fetchData(action, id) {
     `/php/getLocations.php?action=${action}&id=${id}`
   );
   const data = await response.json();
+  console.log(data);
   return data;
 }
 
@@ -27,6 +28,7 @@ async function populateSelectProvincia(element, data) {
     const option = document.createElement("option");
     option.value = item.id_Provincia;
     option.text = item.Nombre;
+    console.log(option);
     element.appendChild(option);
   });
 }
@@ -39,7 +41,7 @@ async function populateSelectCanton(element, data) {
     const option = document.createElement("option");
     option.value = item.id_Canton;
     option.text = item.Nombre;
-
+    console.log(option);
     element.appendChild(option);
   });
 }

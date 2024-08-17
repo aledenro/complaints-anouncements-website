@@ -59,7 +59,7 @@
                         aria-expanded="false">Anuncios</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="/Anuncios/anuncios-form.html">Agregar anuncios</a></li>
+                        <li><a class="dropdown-item" href="/Anuncios/anuncios-form-noofc.html">Agregar anuncios</a></li>
                     </ul>
                 </li>
                 <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
@@ -131,7 +131,7 @@
                             <div class="pb-4 px-6">
                                 <h3 class="mb-4">Envíanos tu denuncia</h3>
                                 <form class="needs-validation mb-3" novalidate="" action="/php/setDenuncias.php"
-                                    method="POST">
+                                    method="POST" id="formDenuncia">
 
                                     <div class="form-check form-switch mb-3">
                                         <input class="form-check-input" type="checkbox" role="switch"
@@ -147,7 +147,7 @@
                                     <div class="mb-3">
                                         <label for="tituloDenuncia" class="form-label visually-hidden">Título</label>
                                         <input type="text" class="form-control" id="tituloDenuncia"
-                                            name="tituloDenuncia" required="" placeholder="Título de la denuncia" />
+                                            name="tituloDenuncia" placeholder="Título de la denuncia" />
                                         <div class="invalid-feedback">Por favor, ingrese el título</div>
                                     </div>
                                     <div class="mb-3">
@@ -190,6 +190,8 @@
                                         <button class="btn btn-primary jus" type="submit">Enviar</button>
                                     </div>
                                 </form>
+                                <div id="resultado" class="alert alert-success" role="alert"></div>
+                                <div id="error" class="alert alert-danger" role="alert"></div>
                             </div>
 
                             <div class="">
@@ -204,6 +206,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -239,7 +242,42 @@
         crossorigin="anonymous"></script>
     <script src="/js/setLocations.js"></script>
     <script src="/js/getCategorias.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const resultadoDiv = document.getElementById("resultado");
+            const errorDiv = document.getElementById("error");
+            resultadoDiv.style.display = "none";
+            errorDiv.style.display = "none";
 
+            $('#formDenuncia').on('submit', function (e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.post('/php/setDenuncias.php', formData, function (data) {
+                    try {
+                        const response = JSON.parse(data);
+
+                        if (response.success) {
+                            // se recibe el mensaje json desde php
+                            $('#resultado').html(response.message);
+                            resultadoDiv.style.display = "block";
+                            $('#formDenuncia').trigger('reset');
+                        } else {
+                            // se recibe el mensaje json desde php
+                            $('#error').html(response.message);
+                            errorDiv.style.display = "block";
+                        }
+                    } catch (e) {
+                        // error de formato
+                        console.error('Parsing error:', e);
+                        $('#error').html('Debe completar todos los campos');
+                        errorDiv.style.display = "block";
+                    }
+
+                });
+            });
+        });
+    </script>
 </body>
 
 

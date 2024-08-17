@@ -1,13 +1,12 @@
 const searchParams = new URLSearchParams(window.location.search);
-const id_anuncio = searchParams.get("id_anuncio");
+const id_denuncia = searchParams.get("id_denuncia");
 const containerCantComentarios = document.getElementById(
-  "containerCantComentarios"
+  "containerCantComentariosD"
 );
-
-const containerComentarios = document.getElementById("containerComentarios");
+const containerComentarios = document.getElementById("containerComentariosD");
 
 function getComentarios(id) {
-  return fetch(`/php/get_comentarios_anuncios.php?id_denuncia=${id}`)
+  return fetch(`/php/get_comentarios_denuncia.php?id_denuncia=${id}`)
     .then((response) => response.json())
     .then((response) => {
       return response;
@@ -16,14 +15,12 @@ function getComentarios(id) {
 
 function renderCountComentarios(comentarios) {
   const cantComentariosElement = (
-    <ul class="nav nav-stack py-3">
-      <li class="nav-item">
-        <a class="nav-link pl-2" href="#!">
-          Comentarios ({comentarios["countComentarios"]}){"  "}
-          <i class="bi bi-chat-fill"></i>
-        </a>
-      </li>
-    </ul>
+    <li class="nav-item">
+      <a class="nav-link" href="#!">
+        Comentarios ({comentarios["countComentarios"]}){"  "}
+        <i class="bi bi-chat-fill pe-1"></i>
+      </a>
+    </li>
   );
 
   ReactDOM.render(cantComentariosElement, containerCantComentarios);
@@ -32,6 +29,7 @@ function renderCountComentarios(comentarios) {
 function renderComentarios(comentarios) {
   const arrayComentarios = comentarios["Comentarios"];
   let arrayComponentes = [];
+  console.log(arrayComentarios);
 
   arrayComentarios.forEach((comentario) => {
     const elemento = (
@@ -77,4 +75,4 @@ async function main(id) {
   await renderComentarios(comentarios);
 }
 
-main(id_anuncio);
+main(id_denuncia);

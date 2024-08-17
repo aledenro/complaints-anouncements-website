@@ -54,11 +54,13 @@ call get_anuncio(1);
 drop procedure if exists get_all_denuncias;
 drop procedure if exists get_denuncia;
 drop function if exists count_comments_denuncia;
-drop procedure if exists get_provincia;
-drop procedure if exists get_canton;
-drop procedure if exists get_distrito;
+drop procedure if exists get_provincias;
+drop procedure if exists get_cantones;
+drop procedure if exists get_distritos;
 drop procedure if exists get_categoria_denuncia;
 drop procedure if exists insert_denuncia;
+drop procedure if exists get_count_comentarios_denuncia;
+drop procedure if exists get_comentarios_denuncia;
 DELIMITER $$
 
 -- contar comentarios
@@ -174,6 +176,9 @@ BEGIN
     WHERE id_Canton = vidCanton;
 END$$ 
 -- get comentarios
+
+DELIMITER $$
+
 CREATE PROCEDURE get_comentarios_anuncio(vid_Anuncio INT)
 BEGIN
 	SET lc_time_names = 'es_CR';
@@ -189,7 +194,24 @@ BEGIN
 	SELECT count_comments_anuncio(vid_Anuncio) cantComentarios FROM DUAL;
 END$$
 
-DELIMITER ;
+
+
+CREATE PROCEDURE get_comentarios_denuncia(vid_Denuncia INT)
+BEGIN
+	SET lc_time_names = 'es_CR';
+    
+    SELECT u.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) Usuario, DATE_FORMAT(dc.Fecha, '%d %M, %Y') Fecha, Texto 
+    FROM Denuncia_Comentario dc
+    JOIN Usuario u ON dc.id_Usuario = u.id_Usuario 
+    WHERE dc.id_Denuncia = vid_Denuncia;
+END$$
+
+CREATE PROCEDURE get_count_comentarios_denuncia(vid_Denuncia INT)
+BEGIN
+	SELECT count_comments_denuncia(vid_Denuncia) cantComentarios FROM DUAL;
+END$$
+
+
 
 -- llamar categorias de denuncia
 
@@ -199,4 +221,34 @@ BEGIN
     FROM Categoria_Denuncia;
 END$$ 
 
+
+DELIMITER $$
+-- llamar las 3 ultimas denuncias 
+
+CREATE PROCEDURE get_latest_denuncias()
+BEGIN
+	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) AS usuario, d.Titulo, d.Fecha, d.url_imagen, count_comments_denuncia(d.id_Denuncia) AS cantComentarios, Anonimo, cd.Nombre AS Categoria
+    FROM Denuncia d
+    JOIN Usuario u ON  d.id_Usuario = u.id_Usuario
+    JOIN Categoria_Denuncia cd ON d.id_CategoriaDenuncia = cd.id_CategoriaDenuncia
+    WHERE d.Estado IS TRUE
+    ORDER BY d.Fecha DESC
+    LIMIT 3;
+END$$
+
+
+CREATE PROCEDURE get_latest_anuncios()
+BEGIN
+	SELECT a.id_Anuncio, a.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) AS usuario, a.Titulo, a.Fecha, a.oficial, a.url_imagen, count_comments_anuncio(a.id_Anuncio) AS cantComentarios
+    FROM Anuncio a
+    JOIN Usuario u ON  a.id_Usuario = u.id_Usuario
+    WHERE a.Estado IS TRUE
+    ORDER BY a.Fecha DESC
+    LIMIT 3;
+END$$
+
+
 DELIMITER ;
+
+
+
