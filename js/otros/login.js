@@ -42,6 +42,12 @@ function handleActionOnServerResponse(success, message) {
 
 function login() {
   getValues();
+  const validEmail = validateEmail(valueUsername);
+  if (!validEmail) {
+    alert("Verifique el formato el correo electronico.");
+    return;
+  }
+
   fetch("/php/login.php", {
     method: "POST",
     headers: {
