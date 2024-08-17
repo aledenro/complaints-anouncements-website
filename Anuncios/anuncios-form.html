@@ -200,7 +200,7 @@
                         id="selectCanton"
                         name="selectCanton"
                       >
-                        <option selected>Cantón</option>
+                        <option selected value="0">Cantón</option>
                       </select>
                     </div>
                     <div class="col">
@@ -209,7 +209,7 @@
                         id="selectDistrito"
                         name="selectDistrito"
                       >
-                        <option selected>Distrito</option>
+                        <option selected value="0">Distrito</option>
                       </select>
                     </div>
                   </div>
@@ -243,6 +243,27 @@
                       Enviar
                     </button>
                   </div>
+                </div>
+                <div
+                  id="resultado"
+                  class="alert alert-success"
+                  role="alert"
+                  hidden
+                >
+                  <p>Anuncio agregado.</p>
+                </div>
+                <div id="error" class="alert alert-danger" role="alert" hidden>
+                  Error al agregar el anuncio.
+                </div>
+                <div
+                  id="warning"
+                  class="alert alert-warning"
+                  role="alert"
+                  hidden
+                >
+                  Verifique que haya completado todos los campos, o que haya
+                  seleccionado una categoría, provincia, cantón y distritos
+                  validos. Solo la imagen es opcional.
                 </div>
 
                 <div class="">

@@ -7,6 +7,9 @@ const selectCanton = document.getElementById("selectCanton");
 const selectDistrito = document.getElementById("selectDistrito");
 const descripcion = document.getElementById("descripcion");
 const imgDenuncia = document.getElementById("imgDenuncia");
+const resultado = document.getElementById("resultado");
+const error = document.getElementById("error");
+const warning = document.getElementById("warning");
 let valueSwitchOficial;
 let valueTituloDenuncia;
 let valueSelectCategoria;
@@ -27,8 +30,36 @@ function getValues() {
   valueImgDenuncia = imgDenuncia.files[0];
 }
 
+function validateValuesBeforeInsert() {
+  const invalid =
+    valueTituloDenuncia === "" ||
+    valueSelectCategoria === "0" ||
+    valueSelectProvincia === "0" ||
+    valueSelectCanton === "0" ||
+    valueSelectDistrito === "0" ||
+    valueDescripcion === "";
+
+  return invalid;
+}
+
+function hideAlerts() {
+  resultado.hidden = true;
+  error.hidden = true;
+  warning.hidden = true;
+}
+
+function setBlankValues() {
+  switchOficial.checked = false;
+  tituloDenuncia.value = "";
+  selectCategoria.value = "0";
+  selectProvincia.value = "0";
+  selectCanton.value = "0";
+  selectDistrito.value = "0";
+  descripcion.value = "";
+  imgDenuncia.value = "";
+}
+
 function insertarAnuncio() {
-  getValues();
   return fetch("/php/setAnuncios.php", {
     method: "POST",
     headers: {
@@ -68,10 +99,32 @@ function updateUrlImg(id_anuncio, url) {
 }
 
 async function main() {
-  const id = await insertarAnuncio();
-  url = await uploadImage(id, valueImgDenuncia);
-  updated = await updateUrlImg(id, url);
-  console.log(updated);
+  const confirmAdd = confirm(
+    'Seleccione "OK" para agregar el anuncio. Presione "Cancel" para seguir modificando el anuncio.'
+  );
+
+  if (confirmAdd === true) {
+    hideAlerts();
+    getValues();
+    const invalid = validateValuesBeforeInsert();
+
+    if (!invalid) {
+      const id = await insertarAnuncio();
+      if (valueImgDenuncia != undefined && valueImgDenuncia != "") {
+        url = await uploadImage(id, valueImgDenuncia, "anuncio");
+        updated = await updateUrlImg(id, url);
+      }
+
+      if (id) {
+        resultado.hidden = false;
+        setBlankValues();
+      } else {
+        error.hidden = false;
+      }
+    } else {
+      warning.hidden = false;
+    }
+  }
 }
 
 btnEnviar.addEventListener("click", main);

@@ -18,7 +18,7 @@ async function populateSelectProvincia(element, data) {
   element.innerHTML = "";
   // para que "provincia" sea la opcion por defecto
   const defaultOption = document.createElement("option");
-  defaultOption.value = "";
+  defaultOption.value = "0";
   defaultOption.text = "Provincia"; // sustituir por posicion 0 en array
   defaultOption.selected = true;
   element.appendChild(defaultOption);
@@ -34,6 +34,11 @@ async function populateSelectProvincia(element, data) {
 // llenar el select de cantones
 async function populateSelectCanton(element, data) {
   element.innerHTML = "";
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "0";
+  defaultOption.text = "Cantón"; // sustituir por posicion 0 en array
+  defaultOption.selected = true;
+  element.appendChild(defaultOption);
   // llenar nombres de los cantones por cada option
   data.forEach((item) => {
     const option = document.createElement("option");
@@ -47,6 +52,10 @@ async function populateSelectCanton(element, data) {
 // llenar el select de distritos
 async function populateSelectDistrito(element, data) {
   element.innerHTML = "";
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "0";
+  defaultOption.text = "Distrito"; // sustituir por posicion 0 en array
+  defaultOption.selected = true;
   // llenar nombres de los distritos por cada option
   data.forEach((item) => {
     const option = document.createElement("option");

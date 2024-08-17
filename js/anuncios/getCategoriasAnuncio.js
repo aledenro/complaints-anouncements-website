@@ -7,7 +7,7 @@ function llenarCategorias() {
 
       element.innerHTML = "";
       const defaultOption = document.createElement("option");
-      defaultOption.value = "";
+      defaultOption.value = "0";
       defaultOption.text = "Categoria";
       defaultOption.selected = true;
       element.appendChild(defaultOption);
