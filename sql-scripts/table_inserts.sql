@@ -604,3 +604,12 @@ VALUES
 (1, 2, '2024-08-02', '¡Espero que encuentren a Max pronto! Publicaré en mis redes sociales para ayudar.', 'Comentario de apoyo para encontrar al perro perdido.'),
 (2, 3, '2024-08-03', 'Gracias por la información sobre el corte de agua. Es importante que todos estemos preparados.', 'Agradecimiento por el aviso del corte de agua.'),
 (3, 1, '2024-08-02', '¡La venta de garaje suena interesante! ¿Aceptan tarjetas de crédito?', 'Pregunta sobre la venta de garaje anunciada.');
+
+-- inserts comentario denuncia
+INSERT INTO Denuncia_Comentario (id_Denuncia, id_Usuario, Fecha, Texto, Descripcion)
+VALUES
+    (1, 2, '2024-08-10', 'Estoy de acuerdo, ese bache es un peligro constante. Ya he reportado el problema a la municipalidad.', ''),
+    (1, 3, '2024-08-12', '¿Alguien sabe cuándo van a arreglar este bache? Ya he caído en él dos veces.', ''),
+    (2, 1, '2024-08-06', 'Vivo cerca de ahí y confirmo que el alumbrado está dañado. Es una preocupación para la seguridad del vecindario.', ''),
+    (3, 1, '2024-08-02', '¡Es una vergüenza que el parque esté en esas condiciones! ¿Dónde está la limpieza pública?', ''),
+    (3, 2, '2024-08-04', 'Además de la basura, los juegos infantiles están rotos. Es necesario una intervención urgente.', '');

@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $isAnonimo = isset($_POST['switchAnonimo']) ? $_POST['switchAnonimo'] : 0;
-    $usuario = 1;
+    $usuario = 3;
     $estado = 1;
 
     function getPostValue($key, $default = '')
@@ -19,7 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $descripcion = getPostValue('descripcion');
     $fecha = date('Y-m-d');
     $url = getPostValue('imgDenuncia');
-    $categoria = 1;
+    $categoria = getPostValue('selectCategoria');
+
+    //
+    if (empty($titulo) || empty($categoria) || empty($provincia) || empty($canton) || empty($distrito) || empty($descripcion)) {
+        echo json_encode(array('success' => false, 'message' => 'Debe completar todos los espacios obligatorios'));
+        exit();
+    }
 
     $conn = openConnection();
 
@@ -32,9 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // ejecutar consulta
         if (mysqli_stmt_execute($stmt)) {
-            echo "Denuncia agregadada a la base de datos";
+            echo json_encode(array('success' => true, 'message' => 'Su denuncia ha sido enviada'));
+            exit();
         } else {
-            echo "ERROR: No se pudo ejecutar la solicitud " . mysqli_stmt_error($stmt);
+            echo json_encode(array('success' => false, 'message' => 'ERROR: No se pudo ejecutar la solicitud'));
+            mysqli_stmt_error($stmt);
         }
 
         mysqli_stmt_close($stmt);

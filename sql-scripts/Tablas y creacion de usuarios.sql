@@ -130,6 +130,7 @@ CREATE TABLE Denuncia_Comentario (
     id_Usuario INT NOT NULL,
     Fecha DATE NOT NULL,
     Texto TEXT NOT NULL,
+    Descripcion TEXT,
     FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );
