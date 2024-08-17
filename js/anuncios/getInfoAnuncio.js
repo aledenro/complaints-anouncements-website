@@ -35,10 +35,7 @@ function constructDetallesAnuncio(jsonAnuncio) {
       <h1>{jsonAnuncio["Titulo"]}</h1>
       <div class="d-flex">
         <strong class="d-inline-block mb-2 badge bg-primary-subtle text-primary-emphasis rounded-pill text-uppercase mx-1">
-          Tag
-        </strong>
-        <strong class="d-inline-block mb-2 badge bg-primary-subtle text-primary-emphasis rounded-pill text-uppercase mx-1">
-          Tag
+          {jsonAnuncio["categoria"]}
         </strong>
       </div>
       <div class="d-flex align-items-center mt-lg-6 mt-4 mb-3">

@@ -4,7 +4,27 @@ drop procedure if exists get_all_anuncios;
 drop procedure if exists get_anuncio;
 drop procedure if exists get_count_comentarios_anuncio;
 drop procedure if exists get_comentarios_anuncio;
+drop procedure if exists get_comentarios_anuncio;
 drop function if exists count_comments_anuncio;
+drop procedure if exists get_all_denuncias;
+drop procedure if exists get_denuncia;
+drop function if exists count_comments_denuncia;
+drop procedure if exists get_provincias;
+drop procedure if exists get_cantones;
+drop procedure if exists get_distritos;
+drop procedure if exists get_categoria_denuncia;
+drop procedure if exists insert_denuncia;
+drop procedure if exists insert_anuncio;
+drop procedure if exists get_categoria_anuncio;
+drop procedure if exists get_id_latest_anuncio;
+drop procedure if exists update_img_url;
+drop procedure if exists get_categoria_denuncia;
+drop procedure if exists insert_denuncia;
+drop procedure if exists get_count_comentarios_denuncia;
+drop procedure if exists get_comentarios_denuncia;
+drop procedure if exists get_latest_denuncias;
+drop procedure if exists get_latest_anuncios;
+
 
 delimiter $$
 
@@ -35,32 +55,23 @@ BEGIN
 	SET lc_time_names = 'es_CR';
     
 	SELECT a.id_Anuncio, a.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, a.Titulo, a.Descripcion , DATE_FORMAT(a.Fecha, '%d %M, %Y') Fecha, a.oficial, a.url_imagen, 
-    CONCAT(p.Nombre, ', ', c.Nombre, ', ', d.Nombre) ubicacion
+    CONCAT(p.Nombre, ', ', c.Nombre, ', ', d.Nombre) ubicacion, ca.Nombre categoria
     FROM Anuncio a
     JOIN Usuario u ON  a.id_Usuario = u.id_Usuario
     JOIN Provincia p ON a.id_Provincia = p.id_Provincia
     JOIN Distrito d ON a.id_Distrito = d.id_Distrito
     JOIN Canton c ON a.id_Canton = c.id_Canton
+    JOIN Categoria_Anuncio ca ON a.id_CategoriaAnuncio = ca.id_CategoriaAnuncio
     WHERE id_Anuncio = vid_Anuncio;
 END$$
 
 delimiter ;
 
 -- call get_all_anuncios();
-call get_anuncio(1);
+-- call get_anuncio(1);
 
 -- cambios valeria
 
-drop procedure if exists get_all_denuncias;
-drop procedure if exists get_denuncia;
-drop function if exists count_comments_denuncia;
-drop procedure if exists get_provincias;
-drop procedure if exists get_cantones;
-drop procedure if exists get_distritos;
-drop procedure if exists get_categoria_denuncia;
-drop procedure if exists insert_denuncia;
-drop procedure if exists get_count_comentarios_denuncia;
-drop procedure if exists get_comentarios_denuncia;
 DELIMITER $$
 
 -- contar comentarios
@@ -154,7 +165,45 @@ BEGIN
     );
 END$$ 
 
-DELIMITER $$
+CREATE PROCEDURE insert_anuncio(
+    IN p_id_Usuario INT,
+    IN p_Titulo VARCHAR(255),
+    IN p_Estado BOOLEAN,
+    IN p_Descripcion TEXT,
+    IN p_oficial BOOLEAN,
+    IN p_id_Provincia INT,
+    IN p_id_Canton INT,
+    IN p_id_Distrito INT,
+    IN p_id_CategoriaAnuncio INT,
+    IN p_url_imagen VARCHAR(5)
+)
+BEGIN
+    INSERT INTO Anuncio (
+        id_Usuario,
+        oficial,
+        Titulo,
+        Estado,
+        Fecha,
+        Descripcion,
+        id_Provincia,
+        id_Canton,
+        id_Distrito,
+        id_CategoriaAnuncio,
+        url_imagen
+    ) VALUES (
+        p_id_Usuario,
+        p_oficial,
+        p_Titulo,
+        p_Estado,
+        CURRENT_DATE,
+        p_Descripcion,
+        p_id_Provincia,
+        p_id_Canton,
+        p_id_Distrito,
+        p_id_CategoriaAnuncio,
+        p_url_imagen
+    );
+END$$ 
 
 CREATE PROCEDURE get_provincias()
 BEGIN
@@ -246,6 +295,25 @@ BEGIN
     ORDER BY a.Fecha DESC
     LIMIT 3;
 END$$
+
+CREATE PROCEDURE get_categoria_anuncio()
+BEGIN
+    SELECT id_CategoriaAnuncio, nombre
+    FROM Categoria_Anuncio;
+END$$ 
+
+CREATE PROCEDURE get_id_latest_anuncio()
+BEGIN
+	SELECT MAX(id_anuncio) as id_anuncio FROM Anuncio;
+END$$
+
+CREATE PROCEDURE update_img_url(IN vid_anuncio INT, IN url VARCHAR(500))
+BEGIN
+	UPDATE Anuncio
+    SET url_imagen = url
+    WHERE id_anuncio = vid_anuncio;
+END$$
+
 
 
 DELIMITER ;
