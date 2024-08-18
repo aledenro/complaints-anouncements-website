@@ -25,6 +25,7 @@ drop procedure if exists get_comentarios_denuncia;
 drop procedure if exists get_latest_denuncias;
 drop procedure if exists get_latest_anuncios;
 drop procedure if exists get_usuario_by_correo;
+drop procedure if exists create_usuario;
 
 
 delimiter $$
@@ -320,6 +321,11 @@ BEGIN
 	SELECT * FROM Usuario WHERE Correo =  vcorreo;
 END$$
 
+CREATE PROCEDURE create_usuario(IN vNombre VARCHAR(25), IN vApellidos VARCHAR(50), IN vcorreo VARCHAR(50), IN vTelefono VARCHAR(25), IN vcontrasena VARCHAR(250))
+BEGIN
+	INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena, rol) 
+	VALUES (vNombre, vApellidos, vcorreo, vTelefono, TRUE, vcontrasena, 'usuario');
+END$$
 
 DELIMITER ;
 
