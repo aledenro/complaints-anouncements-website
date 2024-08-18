@@ -22,8 +22,15 @@ CREATE TABLE Usuario (
     Correo VARCHAR(50) NOT NULL,
     Telefono VARCHAR(25),
     Activo BOOLEAN,
-    contrasena VARCHAR(250) NOT NULL,
-    rol VARCHAR(10) NOT NULL
+    contrasena VARCHAR(25) NOT NULL
+);
+
+-- 3. Rol
+CREATE TABLE Rol (
+    id_Rol INT AUTO_INCREMENT PRIMARY KEY,
+    id_Usuario INT,
+    rolName VARCHAR(25) NOT NULL,
+    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );
 
 -- 5. Provincia
@@ -123,7 +130,6 @@ CREATE TABLE Denuncia_Comentario (
     id_Usuario INT NOT NULL,
     Fecha DATE NOT NULL,
     Texto TEXT NOT NULL,
-    Descripcion TEXT,
     FOREIGN KEY (id_Denuncia) REFERENCES Denuncia(id_Denuncia),
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_Usuario)
 );

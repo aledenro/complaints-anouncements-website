@@ -123,10 +123,12 @@
                                 <div class="avatar avatar-xs me-2">
                                     <a href="#!"> <i class="bi bi-person-circle"></i> </a>
                                 </div>
-                                <form class="nav nav-item w-100 position-relative mb-3">
+                                <form class="nav nav-item w-100 position-relative mb-3" id="formComment"
+                                    name="formComment" action="/php/setComentarioDenuncia.php" method="post">
+
                                     <div class="input-group">
                                         <textarea data-autoresize="" class="form-control pe-5 bg-light" rows="1"
-                                            placeholder="Add a comment..."></textarea>
+                                            placeholder="Add a comment..." id="comentario" name="comentario"></textarea>
                                         <button class="btn btn-outline-primary" type="submit"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
@@ -186,7 +188,7 @@
     <script src="/js/denuncias/getInfoDenuncia.js" type="text/babel">
     </script>
     <script src="/js/denuncias/denuncias-getComentarios.js" type="text/babel"></script>
-    
+    <script src="/js/denuncias/addComment.js"></script>
 </body>
 
 </html>

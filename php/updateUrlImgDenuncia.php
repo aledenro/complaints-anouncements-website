@@ -5,17 +5,17 @@ header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
 
 
-function update_url_img_anuncio($id_anuncio, $url)
+function update_url_img_denuncia($id_denuncia, $url)
 {
 
     $conn = openConnection();
 
-    $sql = "CALL update_img_url (?, ?)";
+    $sql = "CALL update_img_denuncia (?, ?)";
 
     // preparar consulta
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // vincular los parametros
-        mysqli_stmt_bind_param($stmt, 'is', $id_anuncio, $url);
+        mysqli_stmt_bind_param($stmt, 'is', $id_denuncia, $url);
 
         // ejecutar consulta
         if (mysqli_stmt_execute($stmt)) {
@@ -34,11 +34,11 @@ function update_url_img_anuncio($id_anuncio, $url)
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$id_anuncio = (int) $data["id_anuncio"];
+$id_denuncia = (int) $data["id_denuncia"];
 $url  = $data["url"];
 
 
-$actualizado = update_url_img_anuncio($id_anuncio, $url);
+$actualizado = update_url_img_denuncia($id_denuncia, $url);
 
 echo $actualizado;
 exit;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,10 +36,7 @@
       src="https://unpkg.com/babel-standalone@6.26.0/babel.js"
     ></script>
   </head>
-
-  <body>
-    <!-- header -->
-
+<body>
     <div class="container">
       <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
@@ -62,223 +60,145 @@
           </form>
           <div id="containerUserLogin"></div>
         </div>
-      </header>
+        <form class="col-6" role="search">
+          <div class="input-group px-4">
+            <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search" />
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
 
-      <div class="nav-scroller py-1 mb-3 border-bottom">
-        <nav class="nav nav-underline justify-content-between bg-body-tertiary">
-          <a class="nav-item"></a>
-          <a class="nav-item nav-link link-body-emphasis" href="/index.html"
-            >Inicio</a
-          >
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link link-body-emphasis px-2 dropdown-toggle"
-              href="#"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Denuncias</a
-            >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-form.html"
-                  >Agregar denuncias</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link link-body-emphasis px-2 dropdown-toggle"
-              href="#"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Anuncios</a
-            >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/Anuncios/anuncios-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="/Anuncios/anuncios-form.html"
-                  >Agregar anuncios</a
-                >
-              </li>
-            </ul>
-          </li>
-          <a
-            class="nav-item nav-link link-body-emphasis"
-            href="/news/news-dash.html"
-            >Noticias</a
-          >
-          <a
-            class="nav-item nav-link link-body-emphasis"
-            href="/otros/nosotros.html"
-            >Nosotros</a
-          >
-          <a class="nav-item"></a>
-        </nav>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+          <a class="btn btn-sm btn-outline-secondary" href="/otros/sign-up.html">Sign up</a>
+        </div>
       </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-3 border-bottom">
+      <nav class="nav nav-underline justify-content-between bg-body-tertiary">
+        <a class="nav-item"></a>
+        <a class="nav-item nav-link link-body-emphasis" href="/index.html">Inicio</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
+            aria-expanded="false">Denuncias</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/denuncias/denuncia-dash.html">Ver publicaciones</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/denuncias/denuncia-form.html">Agregar denuncias</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
+            aria-expanded="false">Anuncios</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/Anuncios/anuncios-form.html">Agregar anuncios</a>
+            </li>
+          </ul>
+        </li>
+        <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
+        <a class="nav-item nav-link link-body-emphasis" href="/otros/nosotros.html">Nosotros</a>
+        <a class="nav-item"></a>
+      </nav>
     </div>
+  </div>
 
-    <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
 
-    <main>
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-md-10 col-lg-8">
-            <div class="card shadow-sm mb-3">
-              <div class="col-lg-12 p-4">
-                <div class="pt-4 px-4"></div>
-                <div class="pb-4 px-6">
-                  <h3 class="mb-4">Agregar un anuncio</h3>
+  <main>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="card shadow-sm mb-3">
+            <div class="col-lg-12 p-4">
+              <div class="pt-4 px-4"></div>
+              <div class="pb-4 px-6">
+                <h3 class="mb-4">Agregar un anuncio</h3>
 
-                  <div class="form-check form-switch mb-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      name="switchOficial"
-                      id="switchOficial"
-                      value="TRUE"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="switchOficial"
-                      name="switchOficial"
-                      >Anuncio Oficial</label
-                    >
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" role="switch" name="switchOficial" id="switchOficial"
+                    value="TRUE" />
+                  <label class="form-check-label" for="switchOficial" name="switchOficial">Anuncio Oficial</label>
+                </div>
+                <div class="mb-3">
+                  <h5>Datos referentes al anuncio</h5>
+                </div>
+                <div class="mb-3">
+                  <label for="tituloDenuncia" class="form-label visually-hidden">Título</label>
+                  <input type="text" class="form-control" id="tituloDenuncia" name="tituloDenuncia" required
+                    placeholder="Título del Anuncio" />
+                  <div class="invalid-feedback">
+                    Por favor, ingrese el título
                   </div>
-                  <div class="mb-3">
-                    <h5>Datos referentes al anuncio</h5>
+                </div>
+                <div class="mb-3">
+                  <select class="form-select" id="selectCategoria" name="selectCategoria">
+                    <option selected>Categoría</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Por favor, ingrese una categoría
                   </div>
-                  <div class="mb-3">
-                    <label
-                      for="tituloDenuncia"
-                      class="form-label visually-hidden"
-                      >Título</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="tituloDenuncia"
-                      name="tituloDenuncia"
-                      required
-                      placeholder="Título del Anuncio"
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, ingrese el título
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <select
-                      class="form-select"
-                      id="selectCategoria"
-                      name="selectCategoria"
-                    >
-                      <option selected>Categoría</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Por favor, ingrese una categoría
-                    </div>
-                  </div>
-                  <p>¿A que ubicación se refiere en este anuncio?</p>
-                  <div class="mb-3">
-                    <select
-                      class="form-select"
-                      id="selectProvincia"
-                      name="selectProvincia"
-                    >
-                      <option></option>
+                </div>
+                <p>¿A que ubicación se refiere en este anuncio?</p>
+                <div class="mb-3">
+                  <select class="form-select" id="selectProvincia" name="selectProvincia">
+                    <option></option>
+                  </select>
+                </div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <select class="form-select" id="selectCanton" name="selectCanton">
+                      <option selected value="0">Cantón</option>
                     </select>
                   </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <select
-                        class="form-select"
-                        id="selectCanton"
-                        name="selectCanton"
-                      >
-                        <option selected value="0">Cantón</option>
-                      </select>
-                    </div>
-                    <div class="col">
-                      <select
-                        class="form-select"
-                        id="selectDistrito"
-                        name="selectDistrito"
-                      >
-                        <option selected value="0">Distrito</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="descripcion" class="form-label visually-hidden"
-                      >Escriba aquí su anuncio...</label
-                    >
-                    <textarea
-                      rows="3"
-                      class="form-control"
-                      id="descripcion"
-                      name="descripcion"
-                      placeholder="Ingrese los detalles de su denuncia"
-                      required
-                    ></textarea>
-                  </div>
-                  <div class="mb-3">
-                    <label for="imgDenuncia" class="form-label visually-hidden"
-                      >Subir imagenes</label
-                    >
-                    <input
-                      class="form-control"
-                      type="file"
-                      id="imgDenuncia"
-                      name="imgDenuncia"
-                      placeholder="Subir evidencia de la denuncia"
-                    />
-                  </div>
-                  <div class="">
-                    <button class="btn btn-primary jus" id="btnEnviar">
-                      Enviar
-                    </button>
+                  <div class="col">
+                    <select class="form-select" id="selectDistrito" name="selectDistrito">
+                      <option selected value="0">Distrito</option>
+                    </select>
                   </div>
                 </div>
-                <div
-                  id="resultado"
-                  class="alert alert-success"
-                  role="alert"
-                  hidden
-                >
-                  <p>Anuncio agregado.</p>
+                <div class="mb-3">
+                  <label for="descripcion" class="form-label visually-hidden">Escriba aquí su anuncio...</label>
+                  <textarea rows="3" class="form-control" id="descripcion" name="descripcion"
+                    placeholder="Ingrese los detalles de su denuncia" required></textarea>
                 </div>
-                <div id="error" class="alert alert-danger" role="alert" hidden>
-                  Error al agregar el anuncio.
+                <div class="mb-3">
+                  <label for="imgDenuncia" class="form-label visually-hidden">Subir imagenes</label>
+                  <input class="form-control" type="file" id="imgDenuncia" name="imgDenuncia"
+                    placeholder="Subir evidencia del anuncio" />
                 </div>
-                <div
-                  id="warning"
-                  class="alert alert-warning"
-                  role="alert"
-                  hidden
-                >
-                  Verifique que haya completado todos los campos, o que haya
-                  seleccionado una categoría, provincia, cantón y distritos
-                  validos. Solo la imagen es opcional.
-                </div>
-
                 <div class="">
-                  <small>
-                    Al enviar este formulario, usted acepta los términos
-                    establecidos en nuestra
-                    <a href="#" class="link-primary">política de privacidad</a>
-                    .
-                  </small>
+                  <button class="btn btn-primary jus" id="btnEnviar">
+                    Enviar
+                  </button>
                 </div>
+              </div>
+              <div id="resultado" class="alert alert-success" role="alert" hidden>
+                <p>Anuncio agregado.</p>
+              </div>
+              <div id="error" class="alert alert-danger" role="alert" hidden>
+                Error al agregar el anuncio.
+              </div>
+              <div id="warning" class="alert alert-warning" role="alert" hidden>
+                Verifique que haya completado todos los campos, o que haya
+                seleccionado una categoría, provincia, cantón y distritos
+                validos. Solo la imagen es opcional.
+              </div>
+
+              <div class="">
+                <small>
+                  Al enviar este formulario, usted acepta los términos
+                  establecidos en nuestra
+                  <a href="#" class="link-primary">política de privacidad</a>
+                  .
+                </small>
               </div>
             </div>
           </div>
