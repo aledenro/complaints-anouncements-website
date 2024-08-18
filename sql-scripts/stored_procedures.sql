@@ -27,6 +27,8 @@ drop procedure if exists get_latest_anuncios;
 drop procedure if exists update_img_denuncia;
 drop procedure if exists get_id_latest_denuncia;
 drop procedure if exists insert_comentario_denuncia;
+drop procedure if exists get_usuario_by_correo;
+drop procedure if exists create_usuario;
 
 
 delimiter $$
@@ -329,6 +331,11 @@ BEGIN
     WHERE id_denuncia = vid_denuncia;
 END$$
 
+CREATE PROCEDURE create_usuario(IN vNombre VARCHAR(25), IN vApellidos VARCHAR(50), IN vcorreo VARCHAR(50), IN vTelefono VARCHAR(25), IN vcontrasena VARCHAR(250))
+BEGIN
+	INSERT INTO Usuario (Nombre, Apellidos, Correo, Telefono, Activo, contrasena, rol) 
+	VALUES (vNombre, vApellidos, vcorreo, vTelefono, TRUE, vcontrasena, 'usuario');
+END$$
 
 CREATE PROCEDURE insert_comentario_denuncia(
     IN p_id_Denuncia INT,
