@@ -130,68 +130,73 @@
                             </div>
                             <div class="pb-4 px-6">
                                 <h3 class="mb-4">Envíanos tu denuncia</h3>
-                                <form class="needs-validation mb-3" novalidate="" action="/php/setDenuncias.php"
-                                    method="POST" id="formDenuncia">
-
-                                    <div class="form-check form-switch mb-3">
-                                        <input class="form-check-input" type="checkbox" role="switch"
-                                            name="switchAnonimo" value="TRUE">
-                                        <label class="form-check-label" for="switchAnonimo" name="switchAnonimo">Deseo
-                                            que mi
-                                            denuncia sea
-                                            anónima</label>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5>Datos referentes a la denuncia</h5>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="tituloDenuncia" class="form-label visually-hidden">Título</label>
-                                        <input type="text" class="form-control" id="tituloDenuncia"
-                                            name="tituloDenuncia" placeholder="Título de la denuncia" />
-                                        <div class="invalid-feedback">Por favor, ingrese el título</div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <select class="form-select" id="selectCategoria" name="selectCategoria">
-                                            <option selected>Categoría</option>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" name="switchAnonimo"
+                                        value="TRUE">
+                                    <label class="form-check-label" for="switchAnonimo" name="switchAnonimo">Deseo
+                                        que mi
+                                        denuncia sea
+                                        anónima</label>
+                                </div>
+                                <div class="mb-3">
+                                    <h5>Datos referentes a la denuncia</h5>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tituloDenuncia" class="form-label visually-hidden">Título</label>
+                                    <input type="text" class="form-control" id="tituloDenuncia" name="tituloDenuncia"
+                                        required placeholder="Título de la denuncia" />
+                                    <div class="invalid-feedback">Por favor, ingrese el título</div>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select" id="selectCategoria" name="selectCategoria">
+                                        <option selected>Categoría</option>
+                                    </select>
+                                    <div class="invalid-feedback">Por favor, ingrese una categoría</div>
+                                </div>
+                                <p>A que ubicación se refiere en esta denuncia?</p>
+                                <div class="mb-3">
+                                    <select class="form-select" id="selectProvincia" name="selectProvincia">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <select class="form-select" id="selectCanton" name="selectCanton">
+                                            <option selected>Cantón</option>
                                         </select>
-                                        <div class="invalid-feedback">Por favor, ingrese una categoría</div>
                                     </div>
-                                    <p>A que ubicación se refiere en esta denuncia?</p>
-                                    <div class="mb-3">
-                                        <select class="form-select" id="selectProvincia" name="selectProvincia">
-                                            <option></option>
+                                    <div class="col">
+                                        <select class="form-select" id="selectDistrito" name="selectDistrito">
+                                            <option selected>Distrito</option>
                                         </select>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <select class="form-select" id="selectCanton" name="selectCanton">
-                                                <option selected>Cantón</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-select" id="selectDistrito" name="selectDistrito">
-                                                <option selected>Distrito</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="descripcion" class="form-label visually-hidden">Escriba aquí su
-                                            denuncia...</label>
-                                        <textarea rows="3" class="form-control" id="descripcion" name="descripcion"
-                                            placeholder="Ingrese los detalles de su denuncia"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="imgDenuncia" class="form-label visually-hidden">Subir evidencia
-                                            de la denuncia</label>
-                                        <input class="form-control" type="file" id="imgDenuncia" name="imgDenuncia"
-                                            placeholder="Subir evidencia de la denuncia">
-                                    </div>
-                                    <div class="">
-                                        <button class="btn btn-primary jus" type="submit">Enviar</button>
-                                    </div>
-                                </form>
-                                <div id="resultado" class="alert alert-success" role="alert"></div>
-                                <div id="error" class="alert alert-danger" role="alert"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label visually-hidden">Escriba aquí su
+                                        denuncia...</label>
+                                    <textarea rows="3" class="form-control" id="descripcion" name="descripcion"
+                                        placeholder="Ingrese los detalles de su denuncia"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imgDenuncia" class="form-label visually-hidden">Subir evidencia
+                                        de la denuncia</label>
+                                    <input class="form-control" type="file" id="imgDenuncia" name="imgDenuncia"
+                                        placeholder="Subir evidencia de la denuncia">
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-primary jus" id="btnEnviar">Enviar</button>
+                                </div>
+                                <div id="resultado" class="alert alert-success" role="alert" hidden>
+                                    <p>Su denucia ha sido enviada.</p>
+                                </div>
+                                <div id="error" class="alert alert-danger" role="alert" hidden>
+                                    Error al enviar denuncia.
+                                </div>
+                                <div id="warning" class="alert alert-warning" role="alert" hidden>
+                                    Verifique que haya completado todos los campos, o que haya
+                                    seleccionado una categoría, provincia, cantón y distritos
+                                    validos. Solo la imagen es opcional.
+                                </div>
                             </div>
 
                             <div class="">
@@ -242,7 +247,6 @@
         crossorigin="anonymous"></script>
     <script src="/js/setLocations.js"></script>
     <script src="/js/denuncias/getCategoriasDenuncia.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
     <script src="/js/firebase.js"></script>
     <script src="/js/denuncias/denuncias-form.js">

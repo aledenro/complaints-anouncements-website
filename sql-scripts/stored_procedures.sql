@@ -26,6 +26,7 @@ drop procedure if exists get_latest_denuncias;
 drop procedure if exists get_latest_anuncios;
 drop procedure if exists update_img_denuncia;
 drop procedure if exists get_id_latest_denuncia;
+drop procedure if exists insert_comentario_denuncia;
 
 
 delimiter $$
@@ -157,7 +158,7 @@ BEGIN
         p_Anonimo,
         p_Titulo,
         p_Estado,
-        p_Fecha,
+        CURRENT_DATE,
         p_Descripcion,
         p_url_imagen,
         p_id_Provincia,
