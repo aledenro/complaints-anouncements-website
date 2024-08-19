@@ -1,244 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
-    <script
-      type="application/javascript"
-      src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"
-    ></script>
-    <script
-      type="application/javascript"
-      src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"
-    ></script>
-    <script
-      type="application/javascript"
-      src="https://unpkg.com/babel-standalone@6.26.0/babel.js"
-    ></script>
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
     <title>Transparencia Ciudadana</title>
-    <link rel="icon" href="resources/icon2.png" />
-  </head>
+    <link rel="icon" href="resources/icon2.png">
+</head>
 
-  <body>
-    <!-- header -->
+<body>
 
     <div class="container">
-      <header class="border-bottom lh-1 py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-2 pt-1">
-            <a href="/index.html"
-              ><img src="/resources/logo.png" height="30"
-            /></a>
-          </div>
-          <form class="col-6" role="search">
-            <div class="input-group px-4">
-              <input
-                type="search"
-                class="form-control"
-                placeholder="Buscar..."
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-secondary" type="submit">
-                <i class="bi bi-search"></i>
-              </button>
+        <header class="border-bottom lh-1 py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-2 pt-1">
+                    <a href="/index.html"><img src="resources/logo.png" height="30"></a>
+                </div>
+                <form class="col-6" role="search">
+                    <div class="input-group px-4">
+                        <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="col-2 d-flex justify-content-end align-items-center">
+
+                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                </div>
             </div>
-          </form>
+        </header>
 
-          <div id="containerUserLogin"></div>
+        <div class="nav-scroller py-1 mb-3 border-bottom">
+            <nav class="nav nav-underline justify-content-between bg-body-tertiary">
+                <a class="nav-item"></a>
+                <a class="nav-item nav-link link-body-emphasis" href="index.html">Inicio</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link link-body-emphasis px-2 dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">Denuncias</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="denuncia-dash.html">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="denuncia-form.html">Agregar denuncias</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                        aria-expanded="false">Anuncios</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Ver publicaciones</a></li>
+                        <li><a class="dropdown-item" href="#">Agregar anuncios</a></li>
+                    </ul>
+                </li>
+                <a class="nav-item nav-link link-body-emphasis" href="#">Noticias</a>
+                <a class="nav-item nav-link link-body-emphasis" href="#">Nosotros</a>
+                <a class="nav-item"></a>
+            </nav>
         </div>
-      </header>
-
-      <div class="nav-scroller py-1 mb-3 border-bottom">
-        <nav class="nav nav-underline justify-content-between bg-body-tertiary">
-          <a class="nav-item"></a>
-          <a class="nav-item nav-link link-body-emphasis" href="/index.html"
-            >Inicio</a
-          >
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link link-body-emphasis px-2 dropdown-toggle"
-              href="#"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Denuncias</a
-            >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-form.html"
-                  >Agregar denuncias</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link link-body-emphasis px-2 dropdown-toggle"
-              href="#"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Anuncios</a
-            >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/Anuncios/anuncios-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="/Anuncios/anuncios-form.html"
-                  >Agregar anuncios</a
-                >
-              </li>
-            </ul>
-          </li>
-          <a
-            class="nav-item nav-link link-body-emphasis"
-            href="/news/news-dash.html"
-            >Noticias</a
-          >
-          <a class="nav-item nav-link link-body-emphasis" href="nosotros.html"
-            >Nosotros</a
-          >
-          <a class="nav-item"></a>
-        </nav>
-      </div>
     </div>
 
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+
 
     <main>
-      <div class="container mt-4">
-        <h2>Sobre Nosotros</h2>
-        <p>
-          Bienvenido a nuestra plataforma, una iniciativa dedicada a
-          proporcionar un espacio donde los usuarios puedan compartir
-          información importante y relevante. Nuestro objetivo es facilitar la
-          comunicación y el acceso a anuncios oficiales y no oficiales,
-          garantizando que todos estén informados sobre eventos, actividades y
-          avisos importantes del país.
-        </p>
-        <h3>Nuestro Fin</h3>
-        <p>
-          La finalidad de nuestra plataforma es crear un puente de comunicación
-          efectivo entre los ciudadanos y las autoridades, así como entre los
-          mismos usuarios. Queremos asegurar que la información fluya de manera
-          rápida y eficiente, permitiendo a todos mantenerse actualizados sobre
-          los acontecimientos que afectan a su comunidad y su país.
-        </p>
-        <h3>Funciones Principales</h3>
-        <ul>
-          <li>
-            <strong>Visualización de Anuncios:</strong> Los usuarios pueden ver
-            anuncios oficiales y no oficiales, con detalles completos como
-            título, resumen, fecha de publicación y temas relacionados.
-          </li>
-          <li>
-            <strong>Publicación de Anuncios:</strong> Tanto los administradores
-            como los usuarios regulares pueden publicar anuncios,
-            diferenciándose claramente entre oficiales y no oficiales.
-          </li>
-          <li>
-            <strong>Interacción:</strong> Los usuarios pueden comentar y marcar
-            la utilidad de los anuncios, fomentando la participación y el
-            feedback.
-          </li>
-          <li>
-            <strong>Gestión de Anuncios:</strong> Los usuarios pueden editar y
-            eliminar sus propios anuncios, y los administradores tienen control
-            sobre los anuncios oficiales.
-          </li>
-        </ul>
-        <p>
-          Esperamos que encuentres nuestra plataforma útil y que te ayude a
-          mantenerte informado y conectado con tu comunidad. Si tienes alguna
-          pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.
-        </p>
-      </div>
+        <div class="container mt-4">
+            <h2>Sobre Nosotros</h2>
+            <p>
+                Bienvenido a nuestra plataforma, una iniciativa dedicada a proporcionar un espacio donde los usuarios
+                puedan compartir información importante y relevante. Nuestro objetivo es facilitar la comunicación y el
+                acceso a anuncios oficiales y no oficiales, garantizando que todos estén informados sobre eventos,
+                actividades y avisos importantes del país.
+            </p>
+            <h3>Nuestro Fin</h3>
+            <p>
+                La finalidad de nuestra plataforma es crear un puente de comunicación efectivo entre los ciudadanos y
+                las autoridades, así como entre los mismos usuarios. Queremos asegurar que la información fluya de
+                manera rápida y eficiente, permitiendo a todos mantenerse actualizados sobre los acontecimientos que
+                afectan a su comunidad y su país.
+            </p>
+            <h3>Funciones Principales</h3>
+            <ul>
+                <li>
+                    <strong>Visualización de Anuncios:</strong> Los usuarios pueden ver anuncios oficiales y no
+                    oficiales,
+                    con detalles completos como título, resumen, fecha de publicación y temas relacionados.
+                </li>
+                <li>
+                    <strong>Publicación de Anuncios:</strong> Tanto los administradores como los usuarios regulares
+                    pueden publicar anuncios, diferenciándose claramente entre oficiales y no oficiales.
+                </li>
+                <li>
+                    <strong>Interacción:</strong> Los usuarios pueden comentar y marcar la utilidad de los anuncios,
+                    fomentando la participación y el feedback.
+                </li>
+                <li>
+                    <strong>Gestión de Anuncios:</strong> Los usuarios pueden editar y eliminar sus propios anuncios,
+                    y los administradores tienen control sobre los anuncios oficiales.
+                </li>
+            </ul>
+            <p>
+                Esperamos que encuentres nuestra plataforma útil y que te ayude a mantenerte informado y conectado con
+                tu
+                comunidad. Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.
+            </p>
+        </div>
     </main>
 
+
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
-    <!-- footer -->
 
     <div class="container">
-      <footer
-        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
-      >
-        <p class="col-md-4 mb-0 text-body-secondary">
-          © 2024 Transparencia Ciudadana
-        </p>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">© 2024 Transparencia Ciudadana</p>
 
-        <a
-          href="/"
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-        >
-          <img height="50" src="/resources/icon.png" />
-        </a>
+            <a href="/"
+                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img height="50" src="/resources/icon.png">
+                </img>
+            </a>
 
-        <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item">
-            <a href="/index.html" class="nav-link px-2 text-body-secondary"
-              >Inicio</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="/denuncias/denuncia-dash.html"
-              class="nav-link px-2 text-body-secondary"
-              >Denuncias</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="/Anuncios/anuncios-dash.html"
-              class="nav-link px-2 text-body-secondary"
-              >Anuncios</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="/news/news-dash.html"
-              class="nav-link px-2 text-body-secondary"
-              >Noticias</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="nosotros.html" class="nav-link px-2 text-body-secondary"
-              >Nosotros</a
-            >
-          </li>
-        </ul>
-      </footer>
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-body-secondary">Inicio</a>
+                </li>
+                <li class="nav-item"><a href="/denuncia-dash.html"
+                        class="nav-link px-2 text-body-secondary">Denuncias</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Anuncios</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Noticias</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Nosotros</a></li>
+            </ul>
+        </footer>
     </div>
-  </body>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
-  <script src="/js/verifyIfLoggedIn.js"></script>
-  <script src="/js/renderLogIn-Username.js" type="text/babel"></script>
+    crossorigin="anonymous"></script>
+
 </html>
