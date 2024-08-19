@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode(array('success' => false, 'message' => 'ID de denuncia no proporcionado.'));
         exit();
     }
-    $usuario = 1;
+    $usuario = (int) $_SESSION["id_Usuario"];
     $fecha = date('Y-m-d');
     $texto = isset($_POST['comentario']) ? $_POST['comentario'] : '';
 

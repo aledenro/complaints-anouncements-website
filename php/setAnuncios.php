@@ -1,5 +1,6 @@
 <?php
 include "dbConnection.php";
+session_start();
 
 header('Access-Control-Allow-Origin: *'); 
 header("Content-Type: application/json; charset=UTF-8"); 
@@ -44,7 +45,7 @@ $canton = (int) $data["canton"];
 $distrito = (int) $data["distrito"];
 $descripcion = $data["descripcion"];
 $estado = 0;
-$id_usuario = 1;
+$id_usuario = (int) $_SESSION["id_Usuario"];
 $url = "";
 
 $anuncio = insert_anuncio($id_usuario, $titulo, $estado, $descripcion, $oficial, $provincia, $canton, $distrito, $categoria, $url);

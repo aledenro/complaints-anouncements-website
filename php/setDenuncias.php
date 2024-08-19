@@ -44,8 +44,8 @@ $provincia = (int) $data["provincia"];
 $canton = (int) $data["canton"];
 $distrito = (int) $data["distrito"];
 $descripcion = $data["descripcion"];
-$estado = 1;
-$id_usuario = 1;
+$estado = 0;
+$id_usuario = (int) $_SESSION["id_Usuario"];
 $url = "";
 
 $denuncia = insert_denuncia($id_usuario, $isAnonimo, $titulo,  $estado, $descripcion,  $provincia, $canton, $distrito, $categoria, $url);
