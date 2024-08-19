@@ -34,7 +34,7 @@
     ></script>
 
     <title>Transparencia Ciudadana</title>
-    <link rel="icon" href="/resources/icon2.png" />
+    <link rel="icon" href="resources/icon2.png" />
   </head>
 
   <body>
@@ -61,7 +61,6 @@
               </button>
             </div>
           </form>
-
           <div id="containerUserLogin"></div>
         </div>
       </header>
@@ -82,12 +81,12 @@
             >
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-dash.html"
+                <a class="dropdown-item" href="denuncia-dash.html"
                   >Ver publicaciones</a
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-form.html"
+                <a class="dropdown-item" href="denuncia-form.html"
                   >Agregar denuncias</a
                 >
               </li>
@@ -114,14 +113,12 @@
               </li>
             </ul>
           </li>
-          <a class="nav-item nav-link link-body-emphasis" href="news-dash.html"
-            >Noticias</a
-          >
           <a
             class="nav-item nav-link link-body-emphasis"
-            href="/otros/nosotros.html"
-            >Nosotros</a
+            href="/news/news-dash.html"
+            >Noticias</a
           >
+
           <a class="nav-item"></a>
         </nav>
       </div>
@@ -130,9 +127,55 @@
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <main>
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-md-10 col-lg-8" id="containerNews"></div>
+      <div class="py-xl-9 py-4">
+        <div class="container">
+          <div class="row">
+            <article class="col-lg-8 offset-lg-2">
+              <div id="containerAnuncio"></div>
+              <!-- /////////////////////////////////////////// COMENTARIOS////////////////////////////////////////// -->
+
+              <div class="mt-6">
+                <!-- INTERACCIONES -->
+                <h5 class="pt-4">Dejar un comentario...</h5>
+                <div id="containerCantComentarios"></div>
+                <!-- Feed react END -->
+
+                <!-- AGREGAR COMENTARIO -->
+                <div class="d-flex mb-3">
+                  <div class="avatar avatar-xs me-2">
+                    <a href="#!"> <i class="bi bi-person-circle"></i> </a>
+                  </div>
+                  <form class="nav nav-item w-100 position-relative mb-3">
+                    <div class="input-group">
+                      <textarea
+                        data-autoresize=""
+                        class="form-control pe-5 bg-light"
+                        rows="1"
+                        placeholder="Add a comment..."
+                      ></textarea>
+                      <button class="btn btn-outline-primary" type="submit">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-send-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- COMENTARIOS -->
+                <div id="containerComentarios"></div>
+                <!-- Comment wrap END -->
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </main>
@@ -163,7 +206,7 @@
           </li>
           <li class="nav-item">
             <a
-              href="/denuncias/denuncia-dash.html"
+              href="denuncia-dash.html"
               class="nav-link px-2 text-body-secondary"
               >Denuncias</a
             >
@@ -176,7 +219,9 @@
             >
           </li>
           <li class="nav-item">
-            <a href="news-dash.html" class="nav-link px-2 text-body-secondary"
+            <a
+              href="/news/news-dash.html"
+              class="nav-link px-2 text-body-secondary"
               >Noticias</a
             >
           </li>
@@ -190,19 +235,12 @@
         </ul>
       </footer>
     </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
     <script src="/js/verifyIfLoggedIn.js"></script>
     <script src="/js/renderLogIn-Username.js" type="text/babel"></script>
-    <script src="news_api.js" type="text/babel"></script>
+    <script src="/js/anuncios/getInfoAnuncio.js" type="text/babel"></script>
+    <script
+      src="/js/anuncios/anuncios-getComentarios.js"
+      type="text/babel"
+    ></script>
   </body>
 </html>

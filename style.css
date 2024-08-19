@@ -22,3 +22,11 @@ a:hover {
   padding: 24px 24px 24px 56px;
   position: relative;
 }
+
+#imagecontainer {
+  background: url("/resources/carousel1.jpg");
+  width: 100px;
+  height: 200px;
+  border: 1px solid;
+  background-size: contain;
+}
