@@ -123,13 +123,17 @@
                   <div class="avatar avatar-xs me-2">
                     <a href="#!"> <i class="bi bi-person-circle"></i> </a>
                   </div>
-                  <form class="nav nav-item w-100 position-relative mb-3">
+                  <form
+                    class="nav nav-item w-100 position-relative mb-3"
+                    id="formComment"
+                  >
                     <div class="input-group">
                       <textarea
                         data-autoresize=""
                         class="form-control pe-5 bg-light"
                         rows="1"
                         placeholder="Add a comment..."
+                        id="comentario"
                       ></textarea>
                       <button class="btn btn-outline-primary" type="submit">
                         <svg
@@ -221,5 +225,6 @@
       type="text/babel"
     ></script>
     <script src="/js/renderOptionsMenu.js" type="text/babel"></script>
+    <script src="/js/anuncios/addComment.js"></script>
   </body>
 </html>

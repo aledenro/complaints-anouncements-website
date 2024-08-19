@@ -34,7 +34,7 @@ drop procedure if exists get_all_anuncios_listado;
 drop procedure if exists update_estado_anuncio;
 drop procedure if exists get_all_denuncias_listado;
 drop procedure if exists update_estado_denuncia;
-
+drop procedure if exists insert_comentario_anuncio;
 
 delimiter $$
 
@@ -417,6 +417,26 @@ BEGIN
     SET estado = new_estado
     WHERE id_denuncia = id;
 END$$
+
+CREATE PROCEDURE insert_comentario_anuncio(
+    IN p_id_Anuncio INT,
+    IN p_id_Usuario INT,
+    IN p_Fecha DATE,
+    IN p_Texto VARCHAR(255)
+)
+BEGIN
+    INSERT INTO Anuncio_Comentario (
+		id_Anuncio,
+        id_Usuario,
+        Fecha,
+        Texto
+    ) VALUES (
+		p_id_Anuncio,
+        p_id_Usuario,
+        p_Fecha,
+        p_Texto
+    );
+END$$ 
 
 DELIMITER ;
 
