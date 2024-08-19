@@ -60,48 +60,32 @@
           </form>
           <div id="containerUserLogin"></div>
         </div>
-        <form class="col-6" role="search">
-          <div class="input-group px-4">
-            <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search" />
-            <button class="btn btn-outline-secondary" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
-        </form>
-
-        <div class="col-2 d-flex justify-content-end align-items-center">
-          <a class="btn btn-sm btn-outline-secondary" href="/otros/sign-up.html">Sign up</a>
-        </div>
       </div>
-    </header>
+    
 
     <div class="nav-scroller py-1 mb-3 border-bottom">
       <nav class="nav nav-underline justify-content-between bg-body-tertiary">
         <a class="nav-item"></a>
         <a class="nav-item nav-link link-body-emphasis" href="/index.html">Inicio</a>
         <li class="nav-item dropdown">
-          <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
-            aria-expanded="false">Denuncias</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="/denuncias/denuncia-dash.html">Ver publicaciones</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/denuncias/denuncia-form.html">Agregar denuncias</a>
-            </li>
-          </ul>
+          <a
+            class="nav-link link-body-emphasis px-2 dropdown-toggle"
+            href=""
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Denuncias</a
+          >
+          <ul class="dropdown-menu" id="dropdownDenuncias"></ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
-            aria-expanded="false">Anuncios</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/Anuncios/anuncios-form.html">Agregar anuncios</a>
-            </li>
-          </ul>
+          <a
+            class="nav-link link-body-emphasis px-2 dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Anuncios</a
+          >
+          <ul class="dropdown-menu" id="dropdownAnuncios"></ul>
         </li>
         <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
         <a class="nav-item nav-link link-body-emphasis" href="/otros/nosotros.html">Nosotros</a>
@@ -219,5 +203,6 @@
     <script src="/js/firebase.js"></script>
     <script src="/js/anuncios/anuncios-addAnuncio.js"></script>
     <script src="/js/firebase.js"></script>
+    <script src="/js/renderOptionsMenu.js" type="text/babel"></script>
   </body>
 </html>

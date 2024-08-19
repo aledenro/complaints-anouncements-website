@@ -52,20 +52,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="" data-bs-toggle="dropdown"
                         aria-expanded="false">Denuncias</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/denuncias/denuncia-dash.html">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="/denuncias/denuncia-form.html">Agregar denuncias</a></li>
-                        <li><a class="dropdown-item" href="/denuncias/denuncias-listado.html">Listado</a></li>
+                    <ul class="dropdown-menu" id="dropdownDenuncias">
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link link-body-emphasis px-2 dropdown-toggle" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">Anuncios</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/Anuncios/anuncios-dash.html">Ver publicaciones</a></li>
-                        <li><a class="dropdown-item" href="/Anuncios/anuncios-form.html">Agregar anuncios</a></li>
-                        <li><a class="dropdown-item" href="/Anuncios/anuncios-listado.html">Listado</a></li>
-                    </ul>
+                    <ul class="dropdown-menu" id="dropdownAnuncios"></ul>
                 </li>
                 <a class="nav-item nav-link link-body-emphasis" href="/news/news-dash.html">Noticias</a>
                 <a class="nav-item nav-link link-body-emphasis" href="/otros/nosotros.html">Nosotros</a>
@@ -180,5 +173,6 @@
 <script src="/js/verifyIfLoggedIn.js"></script>
 <script src="/js/renderLogIn-Username.js" type="text/babel"></script>
 <script src="/js/index.js" type="text/babel"></script>
+<script src="/js/renderOptionsMenu.js" type="text/babel"></script>
 
 </html>

@@ -29,6 +29,7 @@ drop procedure if exists get_id_latest_denuncia;
 drop procedure if exists insert_comentario_denuncia;
 drop procedure if exists get_usuario_by_correo;
 drop procedure if exists create_usuario;
+drop procedure if exists search_content;
 
 
 delimiter $$
@@ -356,6 +357,22 @@ BEGIN
         p_Texto
     );
 END$$ 
+
+CREATE PROCEDURE search_content(IN keyword VARCHAR(255))
+BEGIN
+    SELECT 'denuncia' AS type, title, description, publication_date 
+    FROM denuncias 
+    WHERE title LIKE CONCAT('%', keyword, '%') OR description LIKE CONCAT('%', keyword, '%')
+    UNION
+    SELECT 'anuncio' AS type, title, description, publication_date 
+    FROM anuncios 
+    WHERE title LIKE CONCAT('%', keyword, '%') OR description LIKE CONCAT('%', keyword, '%');
+END$$ 
+
+CREATE PROCEDURE get_usuario_by_correo(IN vcorreo VARCHAR(50))
+BEGIN 
+    SELECT * FROM Usuario WHERE Correo =  vcorreo;
+END$$
 
 DELIMITER ;
 

@@ -75,23 +75,12 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link link-body-emphasis px-2 dropdown-toggle"
-              href="#"
+              href=""
               data-bs-toggle="dropdown"
               aria-expanded="false"
               >Denuncias</a
             >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="/denuncias/denuncia-form.html"
-                  >Agregar denuncias</a
-                >
-              </li>
-            </ul>
+            <ul class="dropdown-menu" id="dropdownDenuncias"></ul>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -101,18 +90,7 @@
               aria-expanded="false"
               >Anuncios</a
             >
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="anuncios-dash.html"
-                  >Ver publicaciones</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="anuncios-form.html"
-                  >Agregar anuncios</a
-                >
-              </li>
-            </ul>
+            <ul class="dropdown-menu" id="dropdownAnuncios"></ul>
           </li>
           <a
             class="nav-item nav-link link-body-emphasis"
@@ -231,5 +209,6 @@
     <script src="/js/verifyIfLoggedIn.js"></script>
     <script src="/js/renderLogIn-Username.js" type="text/babel"></script>
     <script src="/js/anuncios/anuncios-dash.js" type="text/babel"></script>
+    <script src="/js/renderOptionsMenu.js" type="text/babel"></script>
   </body>
 </html>
