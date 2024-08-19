@@ -32,6 +32,8 @@ drop procedure if exists create_usuario;
 drop procedure if exists search_content;
 drop procedure if exists get_all_anuncios_listado;
 drop procedure if exists update_estado_anuncio;
+drop procedure if exists get_all_denuncias_listado;
+drop procedure if exists update_estado_denuncia;
 
 
 delimiter $$
@@ -394,6 +396,26 @@ BEGIN
 	UPDATE Anuncio
     SET estado = new_estado
     WHERE id_anuncio = id;
+END$$
+
+CREATE PROCEDURE get_all_denuncias_listado()
+BEGIN
+	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, d.Titulo , d.Fecha, d.url_imagen, Anonimo, cd.Nombre AS Categoria,
+     CONCAT(p.Nombre, ', ', c.Nombre, ', ', di.Nombre) ubicacion, d.estado estado
+    FROM Denuncia d
+    JOIN Usuario u ON  d.id_Usuario = u.id_Usuario
+    JOIN Categoria_Denuncia cd ON d.id_CategoriaDenuncia = cd.id_CategoriaDenuncia
+    JOIN Provincia p ON d.id_Provincia = p.id_Provincia
+    JOIN Distrito di ON d.id_Distrito = di.id_Distrito
+    JOIN Canton c ON d.id_Canton = c.id_Canton
+    ORDER BY d.Fecha DESC;
+END$$
+
+CREATE PROCEDURE update_estado_denuncia(IN id INT, IN new_estado BOOLEAN)
+BEGIN
+	UPDATE Denuncia
+    SET estado = new_estado
+    WHERE id_denuncia = id;
 END$$
 
 DELIMITER ;
