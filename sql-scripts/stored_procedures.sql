@@ -30,6 +30,8 @@ drop procedure if exists insert_comentario_denuncia;
 drop procedure if exists get_usuario_by_correo;
 drop procedure if exists create_usuario;
 drop procedure if exists search_content;
+drop procedure if exists get_all_anuncios_listado;
+drop procedure if exists update_estado_anuncio;
 
 
 delimiter $$
@@ -372,6 +374,26 @@ END$$
 CREATE PROCEDURE get_usuario_by_correo(IN vcorreo VARCHAR(50))
 BEGIN 
     SELECT * FROM Usuario WHERE Correo =  vcorreo;
+END$$
+
+CREATE PROCEDURE get_all_anuncios_listado()
+BEGIN
+	SELECT a.id_Anuncio, a.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, a.Titulo , a.Fecha, a.oficial, a.url_imagen, 
+    CONCAT(p.Nombre, ', ', c.Nombre, ', ', d.Nombre) ubicacion, ca.Nombre categoria, a.estado estado
+    FROM Anuncio a
+    JOIN Usuario u ON  a.id_Usuario = u.id_Usuario
+    JOIN Provincia p ON a.id_Provincia = p.id_Provincia
+    JOIN Distrito d ON a.id_Distrito = d.id_Distrito
+    JOIN Canton c ON a.id_Canton = c.id_Canton
+    JOIN Categoria_Anuncio ca ON a.id_CategoriaAnuncio = ca.id_CategoriaAnuncio
+    ORDER BY a.Fecha DESC;
+END$$
+
+CREATE PROCEDURE update_estado_anuncio(IN id INT, IN new_estado BOOLEAN)
+BEGIN
+	UPDATE Anuncio
+    SET estado = new_estado
+    WHERE id_anuncio = id;
 END$$
 
 DELIMITER ;
