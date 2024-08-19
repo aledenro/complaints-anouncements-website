@@ -10,6 +10,7 @@ const imgDenuncia = document.getElementById("imgDenuncia");
 const resultado = document.getElementById("resultado");
 const error = document.getElementById("error");
 const warning = document.getElementById("warning");
+
 let valueSwitchOficial;
 let valueTituloDenuncia;
 let valueSelectCategoria;
@@ -28,6 +29,13 @@ function getValues() {
   valueSelectDistrito = selectDistrito.value;
   valueDescripcion = descripcion.value;
   valueImgDenuncia = imgDenuncia.files[0];
+}
+
+async function setSwitchOficialDisabled() {
+  const loggedInData = await verifyIfLoggedIn();
+  if (loggedInData["rol"] === "usuario") {
+    switchOficial.disabled = true;
+  }
 }
 
 function validateValuesBeforeInsert() {
@@ -128,3 +136,5 @@ async function main() {
 }
 
 btnEnviar.addEventListener("click", main);
+
+setSwitchOficialDisabled();
