@@ -138,7 +138,6 @@ function renderDenuncias() {
           : "Denuncia anónima";
         arrayComponentes.push(
           <div key={denuncia["id_Denuncia"]}>
-            <h3>Denuncias del usuario</h3>
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               {renderImageIfNotEmpty(denuncia["url_imagen"])}
               <div class="col p-4 flex-column position-static">
@@ -204,7 +203,6 @@ function renderAnuncios() {
         const oficial = anuncio["oficial"] === "1";
         arrayComponentes.push(
           <div key={anuncio["id_Anuncio"]}>
-            <h3>Anuncios del usuario</h3>
             <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               {renderImageIfNotEmpty(anuncio["url_imagen"])}
               <div className="col p-4 flex-column position-static">

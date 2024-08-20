@@ -14,7 +14,7 @@ function renderLoginUsername(data) {
   } else {
     componentLogin = (
       <div class="row">
-        <div class="col-2 d-flex justify-content-end align-items-center">
+        <div class="col d-flex justify-content-end align-items-center">
           <i class="bi bi-person-circle"></i>{" "}
           <a
             class="nav-item my-auto text-dark"
@@ -23,7 +23,7 @@ function renderLoginUsername(data) {
             {` ${data["nombre"]} ${data["apellidos"]}`}
           </a>
         </div>
-        <div class="col-2 d-flex justify-content-end align-items-center">
+        <div class="col d-flex justify-content-end align-items-center">
           <a class="btn btn-sm btn-outline-secondary" id="btnLogOut">
             Log Out
           </a>
