@@ -90,7 +90,14 @@ function getDenuncias() {
                   <div class="d-flex align-items-center">
                     <i class="bi bi-person-circle"></i>
                     <div class="ms-2">
-                      <a href="#" class="text-reset fs-6">
+                      <a
+                        href={
+                          denuncia["Anonimo"] === "0"
+                            ? `/usuario/perfil.html?id_usuario=${denuncia["id_Usuario"]}`
+                            : "#"
+                        }
+                        className="text-reset fs-6"
+                      >
                         {denuncia["Anonimo"] === "0"
                           ? denuncia["usuario"]
                           : "Denuncia anónima"}
@@ -160,7 +167,10 @@ function getAnuncios() {
                   <div class="d-flex align-items-center">
                     <i class="bi bi-person-circle"></i>
                     <div class="ms-2">
-                      <a href="#" class="text-reset fs-6">
+                      <a
+                        href={`/usuario/perfil.html?id_usuario=${anuncio["id_Usuario"]}`}
+                        class="text-reset fs-6"
+                      >
                         {anuncio["usuario"]}
                       </a>
                     </div>

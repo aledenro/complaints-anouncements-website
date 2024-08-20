@@ -18,7 +18,7 @@ function renderLoginUsername(data) {
           <i class="bi bi-person-circle"></i>{" "}
           <a
             class="nav-item my-auto text-dark"
-            href={`/usuario/perfil?id_usuario=${data["id_Usuario"]}`}
+            href={`/usuario/perfil.html?id_usuario=${data["id_Usuario"]}`}
           >
             {` ${data["nombre"]} ${data["apellidos"]}`}
           </a>

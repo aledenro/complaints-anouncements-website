@@ -4,7 +4,7 @@ include "dbConnection.php";
 header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json; charset=UTF-8");
 
-
+session_start();
 
 function insert_denuncia($usuario, $isAnonimo, $titulo, $estado, $descripcion, $provincia, $canton, $distrito, $categoria, $url)
 {

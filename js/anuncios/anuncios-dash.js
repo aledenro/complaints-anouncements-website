@@ -21,6 +21,7 @@ function getAllAnuncios() {
       let arrayComponentes = [];
 
       anuncios.forEach((anuncio) => {
+        console.log(anuncio.id_Usuario);
         if (anuncio["oficial"] === "1") {
           arrayComponentes.push(
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -47,7 +48,10 @@ function getAllAnuncios() {
                     <div class="d-flex align-items-center">
                       <i class="bi bi-person-circle"></i>
                       <div class="ms-2">
-                        <a href="#" class="text-reset fs-6">
+                        <a
+                          href={`/usuario/perfil.html?id_usuario=${anuncio["id_Usuario"]}`}
+                          class="text-reset fs-6"
+                        >
                           {anuncio["usuario"]}
                         </a>
                       </div>
