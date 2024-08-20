@@ -1,30 +1,30 @@
-document.getElementById('searchButton').addEventListener('click', function() {
-    const keyword = document.getElementById('searchInput').value;
+document.getElementById("searchButton").addEventListener("click", function () {
+  const keyword = document.getElementById("searchInput").value;
 
-    fetch(`search.php?keyword=${keyword}`)
-        .then(response => response.json())
-        .then(data => {
-            const resultsContainer = document.getElementById('resultsContainer');
-            resultsContainer.innerHTML = '';
-            
-            data.forEach(item => {
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'result';
+  fetch(`search.php?keyword=${keyword}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const resultsContainer = document.getElementById("resultsContainer");
+      resultsContainer.innerHTML = "";
 
-                const title = document.createElement('h3');
-                title.textContent = item.title;
-                
-                const description = document.createElement('p');
-                description.textContent = item.description;
+      data.forEach((item) => {
+        const resultDiv = document.createElement("div");
+        resultDiv.className = "result";
 
-                const date = document.createElement('p');
-                date.textContent = `Publicado el: ${item.publication_date}`;
+        const title = document.createElement("h3");
+        title.textContent = item.title;
 
-                resultDiv.appendChild(title);
-                resultDiv.appendChild(description);
-                resultDiv.appendChild(date);
+        const description = document.createElement("p");
+        description.textContent = item.description;
 
-                resultsContainer.appendChild(resultDiv);
-            });
-        });
+        const date = document.createElement("p");
+        date.textContent = `Publicado el: ${item.publication_date}`;
+
+        resultDiv.appendChild(title);
+        resultDiv.appendChild(description);
+        resultDiv.appendChild(date);
+
+        resultsContainer.appendChild(resultDiv);
+      });
+    });
 });

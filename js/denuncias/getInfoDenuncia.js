@@ -32,6 +32,12 @@ function renderImageIfNotEmpty(img_denuncia) {
 }
 
 function constructDetallesDenuncia(jsonDenuncia) {
+  const usuarioLink =
+    jsonDenuncia.Anonimo === 0
+      ? `/usuario/perfil.html?id_usuario=${jsonDenuncia.id_Usuario}`
+      : "#";
+  const usuarioNombre =
+    jsonDenuncia.Anonimo === 0 ? jsonDenuncia.Usuario : "Denuncia anónima";
   const componenteDenuncia = (
     <div>
       <h1>{jsonDenuncia["Titulo"]}</h1>
@@ -46,10 +52,8 @@ function constructDetallesDenuncia(jsonDenuncia) {
           <div class="d-flex align-items-center mt-2">
             <i class="bi bi-person-circle"></i>
             <div class="ms-2">
-              <a href="#" class="text-reset fs-6">
-                {jsonDenuncia["Anonimo"] === "0"
-                  ? jsonDenuncia["Usuario"]
-                  : "Denuncia anónima"}
+              <a href={usuarioLink} className="text-reset fs-6">
+                {usuarioNombre}
               </a>
             </div>
           </div>

@@ -21,6 +21,7 @@ function getAllDenuncias() {
       let arrayComponentes = [];
 
       denuncias.forEach((denuncia) => {
+        console.log(denuncia);
         arrayComponentes.push(
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             {renderImageIfNotEmpty(denuncia["url_imagen"])}
@@ -46,7 +47,14 @@ function getAllDenuncias() {
                   <div class="d-flex align-items-center">
                     <i class="bi bi-person-circle"></i>
                     <div class="ms-2">
-                      <a href="#" class="text-reset fs-6">
+                      <a
+                        href={
+                          denuncia["Anonimo"] === "0"
+                            ? `/usuario/perfil.html?id_usuario=${denuncia["id_Usuario"]}`
+                            : "#"
+                        }
+                        className="text-reset fs-6"
+                      >
                         {denuncia["Anonimo"] === "0"
                           ? denuncia["usuario"]
                           : "Denuncia anónima"}

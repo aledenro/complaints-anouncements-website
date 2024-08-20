@@ -110,6 +110,7 @@ async function main() {
 
     if (!invalid) {
       const id = await insertarDenuncia();
+      // console.log(id);
       if (valueImgDenuncia != undefined && valueImgDenuncia != "") {
         url = await uploadImage(id, valueImgDenuncia, "denuncia");
         updated = await updateUrlImg(id, url);

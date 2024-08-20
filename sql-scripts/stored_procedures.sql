@@ -35,6 +35,9 @@ drop procedure if exists update_estado_anuncio;
 drop procedure if exists get_all_denuncias_listado;
 drop procedure if exists update_estado_denuncia;
 drop procedure if exists insert_comentario_anuncio;
+drop procedure if exists get_denuncias_usuario;
+drop procedure if exists get_anuncios_usuario;
+drop procedure if exists get_usuario_by_id;
 
 delimiter $$
 
@@ -438,7 +441,50 @@ BEGIN
     );
 END$$ 
 
+
+CREATE PROCEDURE get_denuncias_usuario(vid_usuario int)
+BEGIN
+	SET lc_time_names = 'es_CR';
+
+	SELECT d.id_Denuncia, d.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) Usuario, d.Titulo, d.Descripcion , DATE_FORMAT(d.Fecha, '%d %M, %Y') Fecha, d.url_imagen, 
+    CONCAT(p.Nombre, ', ', c.Nombre, ', ', i.Nombre) Ubicacion, Anonimo, cd.Nombre AS Categoria
+    FROM Denuncia d
+    JOIN Usuario u ON  d.id_Usuario = u.id_Usuario
+    JOIN Provincia p ON d.id_Provincia = p.id_Provincia
+    JOIN Distrito i ON d.id_Distrito = i.id_Distrito
+    JOIN Canton c ON d.id_Canton = c.id_Canton
+    JOIN Categoria_Denuncia cd ON d.id_CategoriaDenuncia = cd.id_CategoriaDenuncia
+    WHERE d.id_Usuario = vid_usuario;
+END$$
+
+CREATE PROCEDURE get_anuncios_usuario(vid_usuario int)
+BEGIN
+	SET lc_time_names = 'es_CR';
+    
+	SELECT a.id_Anuncio, a.id_Usuario, CONCAT(u.Nombre, ' ', u.Apellidos) usuario, a.Titulo, a.Descripcion , DATE_FORMAT(a.Fecha, '%d %M, %Y') Fecha, a.oficial, a.url_imagen, 
+    CONCAT(p.Nombre, ', ', c.Nombre, ', ', d.Nombre) ubicacion, ca.Nombre categoria
+    FROM Anuncio a
+    JOIN Usuario u ON  a.id_Usuario = u.id_Usuario
+    JOIN Provincia p ON a.id_Provincia = p.id_Provincia
+    JOIN Distrito d ON a.id_Distrito = d.id_Distrito
+    JOIN Canton c ON a.id_Canton = c.id_Canton
+    JOIN Categoria_Anuncio ca ON a.id_CategoriaAnuncio = ca.id_CategoriaAnuncio
+    WHERE a.id_Usuario = vid_usuario;
+
+END$$
+
+CREATE PROCEDURE get_usuario_by_id(vid_usuario INT)
+BEGIN
+	SELECT
+        id_Usuario,
+        CONCAT(Nombre, ' ', Apellidos) AS Usuario,
+        Correo,
+        Telefono
+    FROM Usuario
+    WHERE id_Usuario = vid_usuario;
+END$$
+CALL get_usuario(2);
+
 DELIMITER ;
 
-
-
+select * from usuario;
